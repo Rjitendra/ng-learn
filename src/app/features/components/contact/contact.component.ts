@@ -31,20 +31,20 @@ export class ContactComponent {
     this.iconRegistry.addSvgIcon(
       'instagram',
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        'assets/instagram.svg'
+        'icons/instagram.svg'
       )
     );
     // this.iconRegistry.addSvgIcon(
     //   'linkedin',
-    //   this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/linkedin.svg')
+    //   this.sanitizer.bypassSecurityTrustResourceUrl('icons/icons/linkedin.svg')
     // );
     // this.iconRegistry.addSvgIcon(
     //   'twitter',
-    //   this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/twitter.svg')
+    //   this.sanitizer.bypassSecurityTrustResourceUrl('icons/icons/twitter.svg')
     // );
     // this.iconRegistry.addSvgIcon(
     //   'facebook',
-    //   this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/facebook.svg')
+    //   this.sanitizer.bypassSecurityTrustResourceUrl('icons/icons/facebook.svg')
     // );
   }
 }

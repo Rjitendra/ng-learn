@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "NgConcepts": {
+    "nglearn": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -26,7 +26,6 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"
@@ -66,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "NgConcepts:build:production"
+              "buildTarget": "nglearn:build:production"
             },
             "development": {
-              "buildTarget": "NgConcepts:build:development"
+              "buildTarget": "nglearn:build:development"
             }
           },
           "defaultConfiguration": "development"
