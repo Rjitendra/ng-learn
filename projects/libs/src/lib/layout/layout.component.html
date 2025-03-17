@@ -1,0 +1,113 @@
+<mat-toolbar color="primary" class="header">
+  <div class="header-container">
+    <!-- Left Side: Logo and Menu -->
+    <div class="logo-container">
+      <img src="assets/ng-learning.svg" class="logo-img" alt="NG Logo">
+      <span class="brand-name">RJ</span>
+      <button mat-icon-button (click)="toggleSidenav()">
+        <mat-icon [class.rotate]="isRotated">menu</mat-icon>
+      </button>
+    </div>
+
+    <!-- Center: Welcome Text -->
+    <div class="center-content">
+      <span class="brand-name">Welcome to NG Learn</span>
+    </div>
+
+    <!-- Right Side: Additional Content -->
+    <div class="right-content">
+      <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #profileMenu="matMenu">
+        
+        <button mat-menu-item>
+          <div class="toolbar-list-item">
+          <mat-icon class="small-icon">info</mat-icon> <!-- About Icon -->
+          <span>About</span>
+        </div>
+        </button>
+        <button mat-menu-item>
+          <div class="toolbar-list-item">
+          <mat-icon class="small-icon">contact_phone</mat-icon> <!-- Contact Icon -->
+          <span>Contact</span>
+        </div>
+        </button>
+      </mat-menu>
+    </div>
+
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="container">
+  <mat-sidenav #sidenav mode="side" class="sidenav" [opened]="true" [class.collapsed]="!isExpanded && !isHovered">
+    <mat-nav-list>
+      <!-- Parent menu items -->
+      <ng-container *ngFor="let item of navItems">
+        <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item }" />
+      </ng-container>
+    </mat-nav-list>
+
+    <div class="toggle-button-container">
+      <span (click)="toggleSidenav()">
+        {{ isExpanded || isHovered ? '>>' : '<<' }} </span>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="content"
+    [ngClass]="{'content-expanded': (isExpanded || isHovered), 'content-collapsed': (!isExpanded && !isHovered)}">
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-toolbar color="primary" class="footer">
+  <span>&copy; {{ currentYear }} Jitendra. All rights reserved..</span>
+</mat-toolbar>
+
+<!-- Templates -->
+<ng-template #itemTemplate let-item>
+  <!-- Parent item without children -->
+  <a *ngIf="!item.children" mat-list-item [routerLink]="item.url" [routerLinkActive]="['active']"
+    (mouseenter)="onHoverStart()" (mouseleave)="onHoverEnd()">
+    <div class="list-item">
+      <mat-icon class="small-icon">{{ item.icon || 'help_outline'}}</mat-icon>
+      <span *ngIf="isExpanded || isHovered">{{ item.name }}</span>
+    </div>
+
+  </a>
+
+  <!-- Parent item with children -->
+  <ng-container *ngIf="item.children">
+    <a mat-list-item mat-list-item [class.expanded]="item.expanded" (mouseenter)="onHoverStart()"
+      (mouseleave)="onHoverEnd()" (click)="toggleSubMenu(item)">
+      <div class="list-item">
+      <mat-icon class="small-icon">{{ item.icon || 'help_outline'}}</mat-icon>
+      <span *ngIf="isExpanded || isHovered">{{ item.name }}</span>
+      <mat-icon *ngIf="item.expanded && (isExpanded || isHovered)" class="small-icon">expand_less</mat-icon>
+      <mat-icon *ngIf="!item.expanded && (isExpanded || isHovered)" class="small-icon">expand_more</mat-icon>
+    </div>
+  </a>
+    <ng-container *ngIf="item.expanded && (isExpanded || isHovered)">
+      <ng-container *ngTemplateOutlet="childTemplate; context: { children: item.children }" />
+    </ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template #childTemplate let-children="children">
+  <ng-container *ngFor="let child of children">
+    <a mat-list-item [routerLink]="child.url" [routerLinkActive]="['active']" (mouseenter)="onHoverStart()"
+      (mouseleave)="onHoverEnd()" (click)="toggleSubMenu(child)">
+      <div class="list-item">
+      <mat-icon class="small-icon">{{ child.icon}}</mat-icon>
+      <span>{{ child.name }}</span>
+      <mat-icon *ngIf="child.expanded && child.children && (isExpanded || isHovered)" class="small-icon">expand_less</mat-icon>
+      <mat-icon *ngIf="!child.expanded && child.children && (isExpanded || isHovered)" class="small-icon">expand_more</mat-icon>
+    </div>
+    </a>
+
+    <!-- Handle nested children -->
+    <ng-container *ngIf="child.children && child.expanded" (mouseenter)="onHoverStart()"
+      (mouseleave)="onHoverEnd()">
+      <ng-container *ngTemplateOutlet="childTemplate; context: { children: child.children }" />
+    </ng-container>
+  </ng-container>
+</ng-template>
