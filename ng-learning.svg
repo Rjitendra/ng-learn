@@ -1,0 +1,11 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="30" cy="30" r="28" fill="#DD0031"/>
+  <circle cx="30" cy="30" r="20" fill="white"/>
+  <text x="22" y="38" font-size="20px" font-weight="bold" fill="#DD0031">ng</text>
+
+  <!-- Text "Learning" -->
+  <text x="60" y="38" font-size="24px" font-weight="bold" fill="#333" font-family="Arial, sans-serif">
+    Learning
+  </text>
+</svg>
