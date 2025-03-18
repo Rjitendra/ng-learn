@@ -44,7 +44,7 @@ export class LibLayoutComponent {
     }
   }
   toggleSubMenu(item: INav) {
-    //this.closeAllMenus(this.navItems, item);
+   // this.closeAllMenus(this.navItems);
     if (item.expanded) {
       this.closeAllChildren(item);
     }
@@ -63,13 +63,13 @@ export class LibLayoutComponent {
       });
     }
   }
-  private closeAllMenus(items: INav[], exception?: INav) {
+  private closeAllMenus(items: INav[]) {
     items.forEach((navItem) => {
-      if (navItem !== exception) {
+      if (navItem ) {
         navItem.expanded = false;
       }
       if (navItem.children) {
-        this.closeAllMenus(navItem.children, exception);
+        this.closeAllMenus(navItem.children);
       }
     });
   }

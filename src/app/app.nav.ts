@@ -32,19 +32,55 @@ export const NAVITEMS: INav[] = [
     url: '',
     children: [
       {
-        name: 'Forms',
-        url: '',
+        name: 'Angular',
         icon: '',
         children: [
           {
-            name: 'Template Driven',
-            url: 'articles/form/template-driven',
+            name: 'Forms',
             icon: '',
+
+            children: [
+              {
+                name: 'Template Driven',
+                url: 'articles/form/template-driven',
+                icon: '',
+              },
+              {
+                name: 'Reactive',
+                url: 'articles/form/reactive',
+                icon: '',
+              },
+            ],
           },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Articles',
+    icon: 'article',
+    url: '',
+    children: [
+      {
+        name: 'Angular',
+        icon: '',
+        children: [
           {
-            name: 'Reactive',
-            url: 'articles/form/reactive',
+            name: 'Forms',
             icon: '',
+
+            children: [
+              {
+                name: 'Template Driven',
+                url: 'articles/form/template-driven',
+                icon: '',
+              },
+              {
+                name: 'Reactive',
+                url: 'articles/form/reactive',
+                icon: '',
+              },
+            ],
           },
         ],
       },
