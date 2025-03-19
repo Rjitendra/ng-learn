@@ -34,56 +34,34 @@ export const NAVITEMS: INav[] = [
       {
         name: 'Angular',
         icon: '',
-        children: [
-          {
-            name: 'Forms',
-            icon: '',
-
-            children: [
-              {
-                name: 'Template Driven',
-                url: 'articles/form/template-driven',
-                icon: '',
-              },
-              {
-                name: 'Reactive',
-                url: 'articles/form/reactive',
-                icon: '',
-              },
-            ],
-          },
-        ],
+      
+      },
+      {
+        name: 'RXJS',
+        icon: '',
+       
+      },
+      {
+        name: 'NGRX',
+        icon: '',
+      
+      },
+      {
+        name: 'Angular CLI',
+        icon: '',
+        url: '',
+      },
+      {
+        name: 'NX',
+        icon: '',
+        url: '',
       },
     ],
   },
-  {
-    name: 'Articles',
-    icon: 'article',
-    url: '',
-    children: [
-      {
-        name: 'Angular',
-        icon: '',
-        children: [
-          {
-            name: 'Forms',
-            icon: '',
 
-            children: [
-              {
-                name: 'Template Driven',
-                url: 'articles/form/template-driven',
-                icon: '',
-              },
-              {
-                name: 'Reactive',
-                url: 'articles/form/reactive',
-                icon: '',
-              },
-            ],
-          },
-        ],
-      },
-    ],
+  {
+    name: 'Moments',
+    url: 'moments',
+    icon: 'photo_library',
   },
 ];

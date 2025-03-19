@@ -1,0 +1,15 @@
+<div class="moments-container">
+    <h2>📸 My Travel & Activity Moments</h2>
+  
+    <!-- Display Static Images -->
+    <div class="moments-grid">
+      <div class="moment-card" *ngFor="let moment of moments">
+        <div class="image-container">
+          <img [src]="moment.imageUrl" alt="Moment Image" />
+        </div>
+        
+        <span class="caption-label">{{ moment.caption }}</span>
+      </div>
+    </div>
+  </div>
+  

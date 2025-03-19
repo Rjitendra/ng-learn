@@ -13,6 +13,8 @@
   .about-left {
     flex: 1;
     max-width: 400px;
+    display: flex;
+    justify-content: center;
   }
   
   .about-image img {
@@ -90,14 +92,58 @@
   }
   
   /* Responsive Design */
-  @media (max-width: 768px) {
-    .about-container {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .about-right {
-      text-align: center;
-    }
+@media (max-width: 1024px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
   }
+
+  .about-left, .about-right {
+    max-width: 100%;
+  }
+
+  .about-right {
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .skills {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+
+  .about-right {
+    padding: 0;
+  }
+
+  .about-image img {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container {
+    padding: 1rem;
+  }
+
+  .about-right h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-right h3 {
+    font-size: 1.3rem;
+  }
+
+  .skills li {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+}
   

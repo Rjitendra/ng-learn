@@ -3,20 +3,30 @@
   background: linear-gradient(to right, #007bff, #00c6ff);
   color: white;
   padding: 4rem 4rem;
-  // display: flex;
-  // justify-content: center;
-  // width: 100%;
-  .content {
+ .content {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }
   }
 
   .text-content {
     flex: 1;
     text-align: left;
+    @media (max-width: 768px) {
+      text-align: center;
+    }
 
     h1 {
       font-size: 2.5rem;
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
     }
 
     .highlight {
@@ -44,6 +54,10 @@
       height: 250px;
       border-radius: 50%;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      @media (max-width: 768px) {
+        width: 180px;
+        height: 180px;
+      }
     }
 
     .image-caption {
@@ -74,9 +88,16 @@
     padding: 1.5rem;
     text-align: center;
     transition: transform 0.3s ease-in-out;
+    background: white;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 
     &:hover {
       transform: translateY(-5px);
+    }
+    @media (max-width: 768px) {
+      width: 90%;
     }
   }
 

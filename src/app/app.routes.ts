@@ -6,6 +6,7 @@ import { HomeComponent } from './features/components/home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { InterviewQuestionComponent } from './features/components/interview-question/interview-question.component';
 import { TemplateDrivenFormComponent } from './features/components/template-driven-form/template-driven-form.component';
+import { MomentsComponent } from './features/components/moments/moments.component';
 
 export const routes: Routes = [
     {
@@ -18,7 +19,8 @@ export const routes: Routes = [
           { path: 'express-builder', component: ExpressBuilderComponent },
           { path: 'interview-questions', component: InterviewQuestionComponent },
           { path: 'articles/form/template-driven', component: TemplateDrivenFormComponent },
-          { path: 'articles/form/reactive', component: ExpressBuilderComponent }
+          { path: 'articles/form/reactive', component: ExpressBuilderComponent },
+          { path: 'moments', component: MomentsComponent }
        ]
       }
 ];
