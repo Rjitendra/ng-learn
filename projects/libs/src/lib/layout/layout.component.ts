@@ -1,10 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  ViewChild,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
@@ -28,11 +33,12 @@ import { INav } from '../models/inav';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LibLayoutComponent {
-  currentYear: number = new Date().getFullYear();
-  isExpanded = true; // Default state is collapsed
+ currentYear: number = new Date().getFullYear();
+  isExpanded = false; // Default state is collapsed
   isHovered = false; // Tracks hover state
   isRotated = false;
   isLogin = false;
+  menuData: any = null;
   @Input() navItems: INav[] = [];
   toggleSidenav() {
     this.isExpanded = !this.isExpanded;
@@ -44,7 +50,7 @@ export class LibLayoutComponent {
     }
   }
   toggleSubMenu(item: INav) {
-   // this.closeAllMenus(this.navItems);
+    // this.closeAllMenus(this.navItems);
     if (item.expanded) {
       this.closeAllChildren(item);
     }
@@ -55,6 +61,7 @@ export class LibLayoutComponent {
       this.isHovered = false;
     }
   }
+
   private closeAllChildren(item: INav) {
     if (item.children) {
       item.children.forEach((child) => {
@@ -65,7 +72,7 @@ export class LibLayoutComponent {
   }
   private closeAllMenus(items: INav[]) {
     items.forEach((navItem) => {
-      if (navItem ) {
+      if (navItem) {
         navItem.expanded = false;
       }
       if (navItem.children) {

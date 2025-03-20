@@ -1,16 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    overflow-y: hidden; 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.custom-menu {
+  .mat-mdc-menu-item span {
+    font-size: 13px !important;
+    color: rgb(8, 4, 75) !important;
+    font-weight: 500 !important;
   }
-  
-
-body {  margin: 0;
-  font-family: Arial, sans-serif;}
-
-  
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+}

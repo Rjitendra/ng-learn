@@ -4,6 +4,51 @@
   height: 100vh;
   font-family: monospace;
 }
+::ng-deep .custom-menu-submenu a {
+  min-height: 40px !important;
+}
+::ng-deep .custom-menu-submenu {
+  background-color: beige;
+  .mat-mdc-menu-content {
+    padding: 0 !important;
+  }
+  a {
+    min-height: 40px !important;
+  }
+}
+::ng-deep .custom-menu {
+  margin-top: -40px !important;
+  margin-left: 50px !important;
+  background-color: beige;
+  .mat-mdc-menu-content {
+    padding: 0 !important;
+  }
+  a {
+    height: 40px !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+  }
+  button {
+    min-height: 40px;
+    font-size: 13px !important;
+  }
+}
+
+.custom-menu-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  font-size: 13px !important;
+  color: rgb(8, 4, 75) !important;
+  font-weight: 500 !important;
+
+  .small-icon {
+    font-size: 15px;
+    color: rgb(8, 4, 75);
+    height: fit-content;
+  }
+}
 .toolbar-list-item {
   display: flex;
   align-items: center;
@@ -132,4 +177,9 @@
 .mat-toolbar-row,
 .mat-toolbar-single-row {
   padding: 0 0px !important;
+}
+::ng-deep .mat-menu-panel {
+  min-width: auto !important; /* Prevents unnecessary width */
+  width: fit-content; /* Makes menu width match content */
+  transform: translateY(5px) !important; /* Adjust menu positioning */
 }
