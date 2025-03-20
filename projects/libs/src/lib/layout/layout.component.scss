@@ -8,7 +8,7 @@
   min-height: 40px !important;
 }
 ::ng-deep .custom-menu-submenu {
-  background-color: beige;
+  background-color: #dbdbcd !important;
   .mat-mdc-menu-content {
     padding: 0 !important;
   }
@@ -19,7 +19,7 @@
 ::ng-deep .custom-menu {
   margin-top: -40px !important;
   margin-left: 50px !important;
-  background-color: beige;
+  background-color: #dbdbcd !important;
   .mat-mdc-menu-content {
     padding: 0 !important;
   }
@@ -116,7 +116,7 @@
   display: flex;
   flex: 1;
   .sidenav {
-    background-color: beige;
+    background-color: #dbdbcd;
 
     &.collapsed {
       width: 50px;
