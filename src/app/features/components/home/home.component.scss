@@ -3,6 +3,9 @@
   background: linear-gradient(to right, #007bff, #00c6ff);
   color: white;
   padding: 4rem 4rem;
+  @media (max-width: 768px) {
+    padding: 0rem 1rem;
+  }
  .content {
     display: flex;
     align-items: center;
