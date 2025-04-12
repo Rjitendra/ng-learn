@@ -17,6 +17,11 @@ export const NAVITEMS: INav[] = [
     icon: 'contact_phone',
   },
   {
+    name: 'Moments',
+    url: 'moments',
+    icon: 'photo_library',
+  },
+  {
     name: 'Express Builder',
     icon: 'apartment',
     url: 'express-builder',
@@ -34,17 +39,14 @@ export const NAVITEMS: INav[] = [
       {
         name: 'Angular',
         icon: '',
-      
       },
       {
         name: 'RXJS',
         icon: '',
-       
       },
       {
         name: 'NGRX',
         icon: '',
-      
       },
       {
         name: 'Angular CLI',
@@ -58,10 +60,122 @@ export const NAVITEMS: INav[] = [
       },
     ],
   },
-
-  {
-    name: 'Moments',
-    url: 'moments',
-    icon: 'photo_library',
-  },
+  // {
+  //   name: 'Home',
+  //   url: '',
+  //   icon: 'home',
+  // },
+  // {
+  //   name: 'About',
+  //   url: 'about',
+  //   icon: 'info',
+  // },
+  // {
+  //   name: 'Contact',
+  //   url: 'contact',
+  //   icon: 'contact_phone',
+  // },
+  // {
+  //   name: 'Moments',
+  //   url: 'moments',
+  //   icon: 'photo_library',
+  // },
+  // {
+  //   name: 'Express Builder',
+  //   icon: 'apartment',
+  //   url: 'express-builder',
+  // },
+  // {
+  //   name: 'Interview Questions',
+  //   icon: 'quiz',
+  //   url: 'interview-questions',
+  // },
+  // {
+  //   name: 'Articles',
+  //   icon: 'article',
+  //   url: '',
+  //   children: [
+  //     {
+  //       name: 'Angular',
+  //       icon: '',
+  //     },
+  //     {
+  //       name: 'RXJS',
+  //       icon: '',
+  //     },
+  //     {
+  //       name: 'NGRX',
+  //       icon: '',
+  //     },
+  //     {
+  //       name: 'Angular CLI',
+  //       icon: '',
+  //       url: '',
+  //     },
+  //     {
+  //       name: 'NX',
+  //       icon: '',
+  //       url: '',
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: 'Home',
+  //   url: '',
+  //   icon: 'home',
+  // },
+  // {
+  //   name: 'About',
+  //   url: 'about',
+  //   icon: 'info',
+  // },
+  // {
+  //   name: 'Contact',
+  //   url: 'contact',
+  //   icon: 'contact_phone',
+  // },
+  // {
+  //   name: 'Moments',
+  //   url: 'moments',
+  //   icon: 'photo_library',
+  // },
+  // {
+  //   name: 'Express Builder',
+  //   icon: 'apartment',
+  //   url: 'express-builder',
+  // },
+  // {
+  //   name: 'Interview Questions',
+  //   icon: 'quiz',
+  //   url: 'interview-questions',
+  // },
+  // {
+  //   name: 'Articles',
+  //   icon: 'article',
+  //   url: '',
+  //   children: [
+  //     {
+  //       name: 'Angular',
+  //       icon: '',
+  //     },
+  //     {
+  //       name: 'RXJS',
+  //       icon: '',
+  //     },
+  //     {
+  //       name: 'NGRX',
+  //       icon: '',
+  //     },
+  //     {
+  //       name: 'Angular CLI',
+  //       icon: '',
+  //       url: '',
+  //     },
+  //     {
+  //       name: 'NX',
+  //       icon: '',
+  //       url: '',
+  //     },
+  //   ],
+  // }
 ];

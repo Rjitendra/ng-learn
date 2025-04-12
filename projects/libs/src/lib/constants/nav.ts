@@ -2,7 +2,7 @@ import { INav } from '../models/inav';
 
 export const navItems: INav[] = [
   {
-    name: 'Home',
+    name: 'Home1',
     url: '',
     icon: 'home',
   },
@@ -12,7 +12,7 @@ export const navItems: INav[] = [
     url: '/landlord/property',
   },
   {
-    name: 'Interview Questions',
+    name: 'Interview Questions Interview Questions',
     icon: 'apartment',
     url: '',
   },

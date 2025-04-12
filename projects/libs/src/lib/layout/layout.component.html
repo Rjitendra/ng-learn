@@ -4,18 +4,19 @@
     <div class="logo-container">
       <img src="icons/ng-learning.svg" class="logo-img" alt="NG Logo">
       <span class="brand-name">RJ</span>
-      <button mat-icon-button (click)="toggleSidenav()">
+      <span class="menu-button" mat-icon-button (click)="toggleSidenav()">
         <mat-icon [class.rotate]="isRotated">menu</mat-icon>
-      </button>
+      </span>
     </div>
 
     <!-- Center: Welcome Text -->
     <div class="center-content">
-      <span class="brand-name">Welcome to NG Learn</span>
+      <span >Welcome to NG Learn</span>
     </div>
 
     <!-- Right Side: Additional Content -->
     <div class="right-content">
+      <span class="brand-name">v3</span>
       <!-- <button mat-icon-button [matMenuTriggerFor]="profileMenu">
         <mat-icon>account_circle</mat-icon>
       </button>
@@ -40,27 +41,27 @@
 </mat-toolbar>
 
 <mat-sidenav-container class="container">
-  <mat-sidenav #sidenav mode="side" class="sidenav" [opened]="true" [class.collapsed]="!isExpanded && !isHovered">
-    <mat-nav-list>
-      <!-- Parent menu items -->
-      <ng-container *ngFor="let item of navItems">
-        <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item }" />
-      </ng-container>
-    </mat-nav-list>
-
-    <div class="toggle-button-container">
+  <mat-sidenav #sidenav mode="side" class="sidenav" [opened]="true" [class.collapsed]="!isExpanded">
+    <div class="mat-nav-list">
+      <mat-nav-list>
+        <ng-container *ngFor="let item of navItems">
+          <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item }" />
+        </ng-container>
+      </mat-nav-list>
+    </div>
+    <div #toggleButton class="toggle-button-container">
       <span (click)="toggleSidenav()">
-        {{ isExpanded || isHovered ? '>>' : '<<' }} </span>
+        {{ isExpanded ? '>>' : '<<' }} </span>
     </div>
   </mat-sidenav>
   <mat-sidenav-content class="content"
-    [ngClass]="{'content-expanded': (isExpanded || isHovered), 'content-collapsed': (!isExpanded && !isHovered)}">
+    [ngClass]="{'content-expanded': (isExpanded), 'content-collapsed': (!isExpanded)}">
     <router-outlet />
   </mat-sidenav-content>
 </mat-sidenav-container>
 
 <mat-toolbar color="primary" class="footer">
-  <span>&copy; {{ currentYear }} Jitendra. All rights reserved..</span>
+  <p>&copy; {{ currentYear }} Jitendra. All rights reserved..</p>
 </mat-toolbar>
 
 <!-- Templates -->
@@ -98,12 +99,12 @@
         <div class="list-item">
           <mat-icon class="small-icon">{{ item.icon || 'help_outline'}}</mat-icon>
           <span *ngIf="isExpanded">{{ item.name }}</span>
-          <mat-icon *ngIf="item.expanded && (isExpanded || isHovered)" class="small-icon">expand_less</mat-icon>
-          <mat-icon *ngIf="!item.expanded && (isExpanded || isHovered)" class="small-icon">expand_more</mat-icon>
+          <mat-icon *ngIf="item.expanded && (isExpanded)" class="small-icon">expand_less</mat-icon>
+          <mat-icon *ngIf="!item.expanded && (isExpanded)" class="small-icon">expand_more</mat-icon>
         </div>
       </a>
     </div>
-    <ng-container *ngIf="item.expanded && (isExpanded || isHovered)">
+    <ng-container *ngIf="item.expanded && (isExpanded)">
       <ng-container *ngTemplateOutlet="childTemplate; context: { children: item.children }" />
     </ng-container>
   </ng-container>
@@ -116,9 +117,9 @@
         <div class="list-item">
           <mat-icon class="small-icon">{{ child.icon}}</mat-icon>
           <span>{{ child.name }}</span>
-          <mat-icon *ngIf="child.expanded && child.children && (isExpanded || isHovered)"
+          <mat-icon *ngIf="child.expanded && child.children && (isExpanded)"
             class="small-icon">expand_less</mat-icon>
-          <mat-icon *ngIf="!child.expanded && child.children && (isExpanded || isHovered)"
+          <mat-icon *ngIf="!child.expanded && child.children && (isExpanded)"
             class="small-icon">expand_more</mat-icon>
         </div>
       </a>
@@ -134,7 +135,7 @@
   <ng-template matMenuContent let-menudata="menudata">
     <ng-container *ngIf="!menudata.children">
       <a mat-list-item [routerLink]="menudata.url" [routerLinkActive]="['active']">
-        <span class="custom-menu-list-item" > {{ menudata.name }}</span>
+        <span class="custom-menu-list-item"> {{ menudata.name }}</span>
       </a>
     </ng-container>
     <ng-container *ngIf="menudata.children">

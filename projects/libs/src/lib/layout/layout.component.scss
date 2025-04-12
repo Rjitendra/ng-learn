@@ -1,38 +1,43 @@
 :host {
-  display: flex;
-  flex-direction: column;
   height: 100vh;
   font-family: monospace;
 }
-::ng-deep .custom-menu-submenu a {
-  min-height: 40px !important;
-}
-::ng-deep .custom-menu-submenu {
-  background-color: #dbdbcd !important;
-  .mat-mdc-menu-content {
-    padding: 0 !important;
-  }
-  a {
-    min-height: 40px !important;
-  }
-}
-::ng-deep .custom-menu {
-  margin-top: -40px !important;
-  margin-left: 50px !important;
-  background-color: #dbdbcd !important;
-  .mat-mdc-menu-content {
-    padding: 0 !important;
-  }
-  a {
-    height: 40px !important;
-    margin: 0 !important;
-    cursor: pointer !important;
-  }
-  button {
-    min-height: 40px;
-    font-size: 13px !important;
-  }
-}
+
+// ::ng-deep .custom-menu-submenu a {
+//   min-height: 40px !important;
+// }
+
+// ::ng-deep .custom-menu-submenu {
+//   background-color: #dbcdcf !important;
+//   .mat-mdc-menu-content {
+//     padding: 0 !important;
+//   }
+//   a {
+//     min-height: 40px !important;
+//   }
+// }
+
+// ::ng-deep .custom-menu {
+//   position: absolute;
+//   margin-top: -40px !important;
+//   margin-left: 50px !important;
+//   background-color: #dbdbcd !important;
+//   overflow-x: auto; /* Enables scrolling */
+//   white-space: nowrap; /* Prevents wrapping */
+//   max-width: 100vw; /* Ensures it doesn’t overflow */
+//   .mat-mdc-menu-content {
+//     padding: 0 !important;
+//   }
+//   a {
+//     height: 40px !important;
+//     margin: 0 !important;
+//     cursor: pointer !important;
+//   }
+//   button {
+//     min-height: 40px;
+//     font-size: 13px !important;
+//   }
+// }
 
 .custom-menu-list-item {
   display: flex;
@@ -49,6 +54,7 @@
     height: fit-content;
   }
 }
+
 .toolbar-list-item {
   display: flex;
   align-items: center;
@@ -62,30 +68,29 @@
     height: fit-content;
   }
 }
-.header {
-  height: 4vh;
-  background-color: #041267;
 
+.header {
+  height: 5vh;
+  background-color: #041267;
+  position: fixed;
   .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between; /* Distributes content */
     width: 100%;
-
+    height: 100%;
     .logo-container {
       display: flex;
       align-items: center;
       justify-content: flex-start;
+      height: 100%;
+      line-height: 0;
       .logo-img {
-        width: 40px;
-        height: 40px;
+        height: 100%;
         border-radius: 50%;
-        object-fit: cover;
-        display: block;
       }
-
       .brand-name {
-        font-size: 20px;
+        font-size: 1.2vw;
         font-weight: bold;
         color: white;
         font-family: monospace;
@@ -93,6 +98,13 @@
       .rotate {
         transition: transform 0.3s ease-in-out;
         transform: rotate(90deg);
+      }
+      .menu-button {
+        width: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
       }
     }
     .center-content {
@@ -103,7 +115,6 @@
       color: white;
       font-family: monospace;
     }
-
     .right-content {
       display: flex;
       align-items: center;
@@ -114,10 +125,13 @@
 
 .container {
   display: flex;
-  flex: 1;
+  position: fixed;
+  top: 5vh;
+  bottom: 4vh;
+  right: 0;
+  left: 0;
   .sidenav {
     background-color: #dbdbcd;
-
     &.collapsed {
       width: 50px;
     }
@@ -125,7 +139,7 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 16px;
+      gap: 10px;
       font-size: 13px;
       color: rgb(8, 4, 75);
       font-weight: 500;
@@ -136,19 +150,23 @@
         height: fit-content;
       }
     }
+    .mat-nav-list {
+      padding-bottom: 4vh;
+    }
     .toggle-button-container {
+      position: fixed;
+      bottom: 4vh; /* Ensure it stays above the footer */
+      width: 50px;
+
+      height: 3vh;
       display: flex;
       justify-content: end;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding-bottom: 1px;
-      background: white;
+      align-items: center;
       font-weight: bold;
       font-size: 15px;
       color: rgb(8, 4, 75);
-      height: fit-content;
       cursor: pointer;
+      background-color: rgb(255, 255, 255);
     }
   }
   .content {
@@ -165,13 +183,22 @@
 }
 
 .footer {
-  height: 3vh;
+  position: fixed;
+  bottom: 0;
+  height: 4vh;
   z-index: 1000;
   display: flex;
   justify-content: center;
   background-color: #041267;
   font-size: 14px;
   font-family: monospace;
+  align-items: center;
+  width: 100%;
+  p {
+    height: 100%;
+    margin: 0;
+    line-height: 4vh;
+  }
 }
 
 .mat-toolbar-row,
@@ -182,4 +209,54 @@
   min-width: auto !important; /* Prevents unnecessary width */
   width: fit-content; /* Makes menu width match content */
   transform: translateY(5px) !important; /* Adjust menu positioning */
+}
+
+/* ✅ Mobile Portrait (Phones in vertical mode) */
+@media screen and (max-width: 768px) and (orientation: portrait) {
+  .toggle-button-container {
+    position: fixed;
+    bottom: 4vh !important; /* Ensure it stays above the footer */
+    height: 4vh !important;
+    width: auto;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-weight: bold;
+    font-size: 15px;
+    color: rgb(8, 4, 75);
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .footer {
+    position: fixed !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 4vh !important;
+  }
+}
+
+/* ✅ Mobile Landscape (Phones in horizontal mode) */
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  .footer {
+    height: 5vh !important;
+  }
+  .container {
+    bottom: 5vh !important;
+    top: 5vh !important;
+    overflow: hidden;
+    height: auto;
+  }
+  .mat-nav-list {
+    padding-bottom: 5vh;
+  }
+
+  .toggle-button-container {
+    height: 5vh !important;
+    bottom: 5vh !important;
+  }
+
+  .mdc-list {
+    padding: 0;
+  }
 }

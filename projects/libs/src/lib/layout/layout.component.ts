@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   Input,
   ViewChild,
 } from '@angular/core';
@@ -10,7 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { INav } from '../models/inav';
@@ -32,34 +34,48 @@ import { INav } from '../models/inav';
   styleUrl: './layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LibLayoutComponent {
- currentYear: number = new Date().getFullYear();
-  isExpanded = false; // Default state is collapsed
-  isHovered = false; // Tracks hover state
-  isRotated = false;
-  isLogin = false;
-  menuData: any = null;
+export class LibLayoutComponent implements AfterViewInit {
+  @ViewChild('sidenav', { static: true }) sidenav!: MatSidenav;
+  @ViewChild('toggleButton', { read: ElementRef }) toggleButton!: ElementRef;
   @Input() navItems: INav[] = [];
+
+  currentYear: number = new Date().getFullYear();
+  isExpanded = false; // Default state is collapsed
+  isRotated = false;
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.setWidthToToggle();
+      // if (
+      //   (window.innerWidth <= 768 && window.innerHeight > window.innerWidth) ||
+      //   (window.innerWidth <= 1024 && window.innerWidth > window.innerHeight)
+      // ) {
+      //   this.setWidthToToggle();
+      // }
+    }, 100);
+  }
+
   toggleSidenav() {
     this.isExpanded = !this.isExpanded;
     this.isRotated = !this.isRotated;
+    
+    setTimeout(() => {
+      this.setWidthToToggle();
+      // if (
+      //   (window.innerWidth <= 768 && window.innerHeight > window.innerWidth) ||
+      //   (window.innerWidth <= 1024 && window.innerWidth > window.innerHeight)
+      // ) {
+      //   this.setWidthToToggle();
+      // }
+    }, 100);
+    // requestAnimationFrame(() => {
   }
-  onHoverStart(): void {
-    if (!this.isExpanded) {
-      this.isHovered = true;
-    }
-  }
+
   toggleSubMenu(item: INav) {
-    // this.closeAllMenus(this.navItems);
     if (item.expanded) {
       this.closeAllChildren(item);
     }
     item.expanded = !item.expanded;
-  }
-  onHoverEnd(): void {
-    if (!this.isExpanded) {
-      this.isHovered = false;
-    }
   }
 
   private closeAllChildren(item: INav) {
@@ -70,14 +86,10 @@ export class LibLayoutComponent {
       });
     }
   }
-  private closeAllMenus(items: INav[]) {
-    items.forEach((navItem) => {
-      if (navItem) {
-        navItem.expanded = false;
-      }
-      if (navItem.children) {
-        this.closeAllMenus(navItem.children);
-      }
-    });
+  private setWidthToToggle() {
+    const sidenavWidth = this.sidenav._content.nativeElement.offsetWidth;
+    const offsetHeight = this.sidenav._content.nativeElement.offsetHeight;
+    console.log(offsetHeight);
+    this.toggleButton.nativeElement.style.width = `${sidenavWidth}px`;
   }
 }
