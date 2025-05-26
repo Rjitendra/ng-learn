@@ -16,7 +16,7 @@
 
     <!-- Right Side: Additional Content -->
     <div class="right-content">
-      <span class="brand-name">v3</span>
+      <span class="brand-name">v1</span>
       <!-- <button mat-icon-button [matMenuTriggerFor]="profileMenu">
         <mat-icon>account_circle</mat-icon>
       </button>
@@ -56,7 +56,9 @@
   </mat-sidenav>
   <mat-sidenav-content class="content"
     [ngClass]="{'content-expanded': (isExpanded), 'content-collapsed': (!isExpanded)}">
-    <router-outlet />
+    <ng-content select="ng-alert"></ng-content>
+    <div class="content-body"> <router-outlet /></div>
+   
   </mat-sidenav-content>
 </mat-sidenav-container>
 

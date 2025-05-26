@@ -15,7 +15,8 @@ import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-import { INav } from '../models/inav';
+import { INav } from '../../models/inav';
+
 
 @Component({
   selector: 'lib-layout',
@@ -89,7 +90,6 @@ export class LibLayoutComponent implements AfterViewInit {
   private setWidthToToggle() {
     const sidenavWidth = this.sidenav._content.nativeElement.offsetWidth;
     const offsetHeight = this.sidenav._content.nativeElement.offsetHeight;
-    console.log(offsetHeight);
     this.toggleButton.nativeElement.style.width = `${sidenavWidth}px`;
   }
 }

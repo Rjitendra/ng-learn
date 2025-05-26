@@ -1,0 +1,7 @@
+<h2>Child Component (OnPush)</h2>
+<ul>
+    @for (course of courses; track $index; let i = $index) {
+    <li>{{ i }}-{{ course.name }}</li>
+    }
+
+</ul>

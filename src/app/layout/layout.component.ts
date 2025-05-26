@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { LibLayoutComponent } from '../../../projects/libs/src/public-api';
+import { LibLayoutComponent, NgAlertComponent } from '../../../projects/libs/src/public-api';
 import { NAVITEMS } from '../app.nav';
 
 @Component({
   selector: 'app-layout',
-  imports: [LibLayoutComponent],
+  imports: [LibLayoutComponent,NgAlertComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })

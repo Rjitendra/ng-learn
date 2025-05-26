@@ -3,42 +3,6 @@
   font-family: monospace;
 }
 
-// ::ng-deep .custom-menu-submenu a {
-//   min-height: 40px !important;
-// }
-
-// ::ng-deep .custom-menu-submenu {
-//   background-color: #dbcdcf !important;
-//   .mat-mdc-menu-content {
-//     padding: 0 !important;
-//   }
-//   a {
-//     min-height: 40px !important;
-//   }
-// }
-
-// ::ng-deep .custom-menu {
-//   position: absolute;
-//   margin-top: -40px !important;
-//   margin-left: 50px !important;
-//   background-color: #dbdbcd !important;
-//   overflow-x: auto; /* Enables scrolling */
-//   white-space: nowrap; /* Prevents wrapping */
-//   max-width: 100vw; /* Ensures it doesn’t overflow */
-//   .mat-mdc-menu-content {
-//     padding: 0 !important;
-//   }
-//   a {
-//     height: 40px !important;
-//     margin: 0 !important;
-//     cursor: pointer !important;
-//   }
-//   button {
-//     min-height: 40px;
-//     font-size: 13px !important;
-//   }
-// }
-
 .custom-menu-list-item {
   display: flex;
   align-items: center;
@@ -170,15 +134,17 @@
     }
   }
   .content {
-    //padding: 10px;
     width: 100%;
     &.content-expanded {
-      margin-left: 200px !important;
+      margin-left: 192px !important;
     }
 
     &.content-collapsed {
       margin-left: 50px !important;
     }
+  }
+  .content-body {
+    padding: 10px;
   }
 }
 
@@ -209,54 +175,4 @@
   min-width: auto !important; /* Prevents unnecessary width */
   width: fit-content; /* Makes menu width match content */
   transform: translateY(5px) !important; /* Adjust menu positioning */
-}
-
-/* ✅ Mobile Portrait (Phones in vertical mode) */
-@media screen and (max-width: 768px) and (orientation: portrait) {
-  .toggle-button-container {
-    position: fixed;
-    bottom: 4vh !important; /* Ensure it stays above the footer */
-    height: 4vh !important;
-    width: auto;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    font-weight: bold;
-    font-size: 15px;
-    color: rgb(8, 4, 75);
-    cursor: pointer;
-    background-color: rgb(255, 255, 255);
-  }
-
-  .footer {
-    position: fixed !important;
-    bottom: 0 !important;
-    width: 100% !important;
-    height: 4vh !important;
-  }
-}
-
-/* ✅ Mobile Landscape (Phones in horizontal mode) */
-@media screen and (max-width: 1024px) and (orientation: landscape) {
-  .footer {
-    height: 5vh !important;
-  }
-  .container {
-    bottom: 5vh !important;
-    top: 5vh !important;
-    overflow: hidden;
-    height: auto;
-  }
-  .mat-nav-list {
-    padding-bottom: 5vh;
-  }
-
-  .toggle-button-container {
-    height: 5vh !important;
-    bottom: 5vh !important;
-  }
-
-  .mdc-list {
-    padding: 0;
-  }
 }
