@@ -24,29 +24,40 @@ export class ChangeDetectionComponent implements OnInit {
   constructor(private $cd: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.updateWithoutMarkForCheck();
+    this.autoUpdate();
   }
-
+  autoUpdate() {
+    setTimeout(() => {
+      this.courses = [...this.courses, { id: 4, name: 'Updated course' }];
+      this.$cd.detectChanges();
+      // No cd.markForCheck() or cd.detectChanges()
+    }, 1000);
+  }
   // 1. No manual CD call - view will NOT update immediately
   updateWithoutMarkForCheck() {
     setTimeout(() => {
-      this.courses[0].name = 'Updated WITHOUT markForCheck';
-      // this.courses = [
-      //   { ...this.courses[0], name: 'Updated course' },
-      //   ...this.courses.slice(1),
-      // ];
-      this.$cd.markForCheck();
+      this.courses = [...this.courses, { id: 4, name: 'Updated course' }];
+      //   this.courses.push({
+      //     id: 5, name: 'Updated course 2',
+      //   });
+      // this.$cd.detectChanges();
       // No cd.markForCheck() or cd.detectChanges()
-      // View might NOT update immediately because OnPush CD doesn't detect mutation here
     }, 200);
   }
 
   // 2. Using markForCheck() - schedules CD on next cycle - view WILL update soon after
   updateWithMarkForCheck() {
-    setTimeout(() => {
-      this.courses[0].name = 'Updated WITH markForCheck';
-      this.$cd.markForCheck(); // Schedules this component for CD on next cycle
-    }, 200);
+      this.courses = [
+        { ...this.courses[0], name: 'Updated WITH markForCheck' },
+        ...this.courses.slice(1),
+      ];
+    // setTimeout(() => {
+    //   this.courses = [
+    //     { ...this.courses[0], name: 'Updated WITH markForCheck' },
+    //     ...this.courses.slice(1),
+    //   ];
+    //   this.$cd.markForCheck();
+    // }, 200);
   }
 
   // 3. Using detectChanges() - runs CD immediately - view updates right away

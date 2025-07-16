@@ -9,6 +9,7 @@ import { TemplateDrivenFormComponent } from './features/components/template-driv
 import { MomentsComponent } from './features/components/moments/moments.component';
 import { RxjsComponent } from './features/components/rxjs/rxjs.component';
 import { ChangeDetectionComponent } from './features/components/change-detection/change-detection.component';
+import { ProductCrudComponent } from './features/components/product-crud/product-crud.component';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,7 @@ export const routes: Routes = [
       { path: 'moments', component: MomentsComponent },
       { path: 'article/rxjs', component: RxjsComponent },
       { path: 'cd', component: ChangeDetectionComponent },
+      { path: 'product', component: ProductCrudComponent },
     ],
   },
 ];
