@@ -109,7 +109,7 @@
       },
       "root": "projects/libs",
       "sourceRoot": "projects/libs/src",
-      "prefix": "lib",
+      "prefix": "ng",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
