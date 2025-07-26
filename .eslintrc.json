@@ -1,9 +1,16 @@
 {
   "root": true,
-  "ignorePatterns": ["node_modules/", "dist/", "coverage/", "*.spec.ts"],
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    "coverage/",
+    "*.spec.ts"
+  ],
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": [
+        "*.ts"
+      ],
       "extends": [
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
@@ -11,19 +18,33 @@
       ],
       "rules": {
         "@angular-eslint/prefer-inject": "off",
-        "semi": ["error", "always"],
-        "quotes": ["error", "single"],
+        "semi": [
+          "error",
+          "always"
+        ],
+        "quotes": [
+          "error",
+          "single"
+        ],
         "prettier/prettier": "error" // ✅ Show formatting issues as ESLint errors
       }
     },
     {
-      "files": ["*.component.html"],
+      "files": [
+        "*.component.html"
+      ],
       "parser": "@angular-eslint/template-parser",
-      "plugins": ["@angular-eslint/template", "prettier"],
+      "plugins": [
+        "@angular-eslint/template",
+        "prettier"
+      ],
       "rules": {
         "@angular-eslint/template/self-closing-tag": "off",
         "prettier/prettier": "error"
       }
     }
+  ],
+  "extends": [
+    "plugin:storybook/recommended"
   ]
 }
