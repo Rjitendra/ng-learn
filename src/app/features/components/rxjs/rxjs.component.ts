@@ -12,7 +12,7 @@ const numbers$ = of([1, 2, 3]); //emit single
 // const numbers$ = of(1, 2, 3).pipe(single((value) => value > 2, () => 'No value emitted', () => 'No value emitted', () => 'No value emitted')); //emit single value with condition and default value and error message and error message
 
 @Component({
-  selector: 'app-rxjs',
+  selector: 'ng-rxjs',
   imports: [CommonModule],
   templateUrl: './rxjs.component.html',
   styleUrl: './rxjs.component.scss',
@@ -115,21 +115,21 @@ counter$.next(1);</code></pre>
 
   ngOnInit(): void {
     this.data$ = concat(numbers$).pipe(
-      tap(value => {
+      tap((value) => {
         //  this.tape1 = value;
         console.log('Value before map:', value);
       }),
-      map(value => {
+      map((value) => {
         console.log('Value inside map:', value);
         return value; // Example transformation: double the value
       }),
-      switchMap(value => {
+      switchMap((value) => {
         console.log('Value inside switchMap:', value);
         return of(value);
       }),
     );
 
-    const numbers1$ = of(1, 2, 3).pipe(tap(value => console.log('Inside numbers1$ tap:', value)));
+    const numbers1$ = of(1, 2, 3).pipe(tap((value) => console.log('Inside numbers1$ tap:', value)));
 
     // Mock services
     const getUserProfile = () => of({ userId: 1, name: 'John Doe' }).pipe(delay(500));
@@ -152,25 +152,25 @@ counter$.next(1);</code></pre>
 
     getUserProfile()
       .pipe(
-        tap(user => console.log('User Profile:', user)),
+        tap((user) => console.log('User Profile:', user)),
 
-        switchMap(user =>
+        switchMap((user) =>
           getUserProjects(user.userId).pipe(
-            tap(projects => console.log('User Projects:', projects)),
+            tap((projects) => console.log('User Projects:', projects)),
 
             // Fetch each project detail sequentially
-            switchMap(projects =>
+            switchMap((projects) =>
               concat(
-                ...projects.map(project =>
+                ...projects.map((project) =>
                   getProjectDetails(project.projectId).pipe(
-                    tap(detail => console.log('Project Detail:', detail)),
+                    tap((detail) => console.log('Project Detail:', detail)),
 
                     // For each project detail, fetch stats concurrently
-                    switchMap(detail =>
+                    switchMap((detail) =>
                       getProjectStats(detail.projectId).pipe(
-                        tap(stats => console.log('Project Stats:', stats)),
+                        tap((stats) => console.log('Project Stats:', stats)),
 
-                        map(stats => ({
+                        map((stats) => ({
                           ...detail,
                           stats,
                         })),
@@ -183,7 +183,7 @@ counter$.next(1);</code></pre>
           ),
         ),
       )
-      .subscribe(finalData => {
+      .subscribe((finalData) => {
         console.log('📦 Final Project Data with Stats:', finalData);
       });
   }

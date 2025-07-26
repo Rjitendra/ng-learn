@@ -9,7 +9,7 @@ import {
 import { ICourse } from '../cource';
 
 @Component({
-  selector: 'app-child',
+  selector: 'ng-child',
   imports: [],
   templateUrl: './child.component.html',
   styleUrl: './child.component.scss',

@@ -3,7 +3,7 @@ import { LibLayoutComponent, NgAlertComponent } from '../../../projects/libs/src
 import { NAVITEMS } from '../app.nav';
 
 @Component({
-  selector: 'app-layout',
+  selector: 'ng-layout',
   imports: [LibLayoutComponent, NgAlertComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',

@@ -1,5 +1,3 @@
-node_modules
-dist
-coverage
-*.svg
-*.png
+*.spec.ts
+dist/
+node_modules/

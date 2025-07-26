@@ -50,8 +50,8 @@ const TREE_DATA: FoodNode[] = [
 })
 export class NgTreeComponent {
   treeControl = new FlatTreeControl<ExampleFlatNode>(
-    node => node.level,
-    node => node.expandable,
+    (node) => node.level,
+    (node) => node.expandable,
   );
 
   private _transformer = (node: FoodNode, level: number) => {
@@ -64,9 +64,9 @@ export class NgTreeComponent {
 
   treeFlattener = new MatTreeFlattener(
     this._transformer,
-    node => node.level,
-    node => node.expandable,
-    node => node.children,
+    (node) => node.level,
+    (node) => node.expandable,
+    (node) => node.children,
   );
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);

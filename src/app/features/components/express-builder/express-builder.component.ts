@@ -8,7 +8,7 @@ interface Course {
   name: string;
 }
 @Component({
-  selector: 'app-express-builder',
+  selector: 'ng-express-builder',
   imports: [CommonModule, NgTreeComponent],
   templateUrl: './express-builder.component.html',
   styleUrl: './express-builder.component.scss',
@@ -132,7 +132,7 @@ export class ExpressBuilderComponent {
           );
         }),
       )
-      .subscribe(result => {
+      .subscribe((result) => {
         console.log('✅ Second forkJoin result:', result);
       });
   }

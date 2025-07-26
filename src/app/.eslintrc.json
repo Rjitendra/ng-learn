@@ -4,7 +4,15 @@
     {
       "files": ["*.ts"],
       "rules": {
-        "no-console": "off"
+        "no-console": "off",
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": ["ng"],
+            "style": "kebab-case"
+          }
+        ]
       }
     }
   ]

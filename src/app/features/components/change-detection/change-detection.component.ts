@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ICourse } from './cource';
 
 @Component({
-  selector: 'app-change-detection',
+  selector: 'ng-change-detection',
   imports: [CommonModule, ChildComponent],
   templateUrl: './change-detection.component.html',
   styleUrl: './change-detection.component.scss',

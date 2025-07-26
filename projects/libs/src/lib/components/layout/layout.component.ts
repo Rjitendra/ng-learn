@@ -80,7 +80,7 @@ export class LibLayoutComponent implements AfterViewInit {
 
   private closeAllChildren(item: INav) {
     if (item.children) {
-      item.children.forEach(child => {
+      item.children.forEach((child) => {
         child.expanded = false;
         this.closeAllChildren(child); // Recursive call for deep nesting
       });

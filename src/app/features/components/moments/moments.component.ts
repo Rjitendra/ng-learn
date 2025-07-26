@@ -6,7 +6,7 @@ interface Moment {
   caption: string;
 }
 @Component({
-  selector: 'app-moments',
+  selector: 'ng-moments',
   imports: [CommonModule],
   templateUrl: './moments.component.html',
   styleUrl: './moments.component.scss',

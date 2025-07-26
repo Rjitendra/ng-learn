@@ -19,14 +19,14 @@ export class NgAlertComponent implements OnInit, OnDestroy {
   constructor(private alertService: AlertService) {}
 
   ngOnInit(): void {
-    this.alertService.getAlert().subscribe(alert => {
+    this.alertService.getAlert().subscribe((alert) => {
       if (alert.errors?.length) {
         alert.id = uuidv4();
         this.alerts.push(alert);
         if (alert.timeout) {
           const id = alert.id;
           setTimeout(() => {
-            const index = this.alerts.findIndex(a => a.id === id);
+            const index = this.alerts.findIndex((a) => a.id === id);
             if (index > -1) {
               this.alerts.splice(index, 1);
             }

@@ -9,7 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-contact',
+  selector: 'ng-contact',
   imports: [
     CommonModule,
     RouterModule,

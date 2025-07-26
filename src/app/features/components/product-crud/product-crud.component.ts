@@ -12,7 +12,7 @@ import { tap, switchMap } from 'rxjs/operators';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Component({
-  selector: 'app-product-crud',
+  selector: 'ng-product-crud',
   imports: [
     CommonModule,
     FormsModule,
@@ -43,7 +43,7 @@ export class ProductCrudComponent implements OnInit {
   ngOnInit(): void {
     this.products$ = this.productService.getAll().pipe(
       tap((products: IProductDto[]) => {
-        this.products = products.filter(x => x.isDeleted == false);
+        this.products = products.filter((x) => x.isDeleted == false);
       }),
     );
   }
@@ -74,7 +74,7 @@ export class ProductCrudComponent implements OnInit {
           if (opertionalType === OperationType.Create) {
             this.products.push(res);
           } else {
-            const index = this.products.findIndex(p => p.pkId === res.pkId);
+            const index = this.products.findIndex((p) => p.pkId === res.pkId);
             this.products[index] = res;
           }
           this.products$ = of([...this.products]);
@@ -100,7 +100,7 @@ export class ProductCrudComponent implements OnInit {
           if (opertionalType === OperationType.Create) {
             this.products.push(res);
           } else {
-            const index = this.products.findIndex(p => p.pkId === res.pkId);
+            const index = this.products.findIndex((p) => p.pkId === res.pkId);
             this.products[index] = res;
           }
           this.products$ = of([...this.products]);
@@ -124,7 +124,7 @@ export class ProductCrudComponent implements OnInit {
     obs$
       .pipe(
         tap((res: IProductDto) => {
-          const index = this.products.findIndex(p => p.pkId === res.pkId);
+          const index = this.products.findIndex((p) => p.pkId === res.pkId);
           if (index !== -1) {
             this.products.splice(index, 1); // ✅ removes the item at index
             this.products$ = of([...this.products]); // ✅ emit new value
@@ -145,13 +145,13 @@ export class ProductCrudComponent implements OnInit {
       .pipe(
         tap((res: IProductDto) => {
           if (!res) {
-            const index = this.products.findIndex(p => p.pkId === product.pkId);
+            const index = this.products.findIndex((p) => p.pkId === product.pkId);
             if (index !== -1) {
               this.products.splice(index, 1);
               this.products$ = of([...this.products]);
             }
           } else {
-            const index = this.products.findIndex(p => p.pkId === res.pkId);
+            const index = this.products.findIndex((p) => p.pkId === res.pkId);
             if (index !== -1) {
               this.products[index] = res; // ✅ updates the item at index
               this.products$ = of([...this.products]); // ✅ emit new value

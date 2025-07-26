@@ -1,25 +1,28 @@
 {
   "root": true,
-  "ignorePatterns": ["node_modules/", "dist/", "coverage/"],
+  "ignorePatterns": ["node_modules/", "dist/", "coverage/", "*.spec.ts"],
   "overrides": [
     {
       "files": ["*.ts"],
       "extends": [
         "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:prettier/recommended" // 🔥 Add this
       ],
       "rules": {
         "@angular-eslint/prefer-inject": "off",
         "semi": ["error", "always"],
+        "quotes": ["error", "single"],
         "prettier/prettier": "error" // ✅ Show formatting issues as ESLint errors
       }
     },
     {
       "files": ["*.component.html"],
       "parser": "@angular-eslint/template-parser",
-      "plugins": ["@angular-eslint/template"],
+      "plugins": ["@angular-eslint/template", "prettier"],
       "rules": {
-        "@angular-eslint/template/self-closing-tag": "off"
+        "@angular-eslint/template/self-closing-tag": "off",
+        "prettier/prettier": "error"
       }
     }
   ]
