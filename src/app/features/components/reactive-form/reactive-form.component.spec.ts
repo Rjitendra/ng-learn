@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ReactiveFormComponent } from './reactive-form.component';
+import { ReactiveFormComponent } from "./reactive-form.component";
 
-describe('ReactiveFormComponent', () => {
+describe("ReactiveFormComponent", () => {
   let component: ReactiveFormComponent;
   let fixture: ComponentFixture<ReactiveFormComponent>;
 
@@ -17,7 +17,7 @@ describe('ReactiveFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

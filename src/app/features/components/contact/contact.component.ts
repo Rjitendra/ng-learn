@@ -1,15 +1,15 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
 
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { DomSanitizer } from '@angular/platform-browser';
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule, MatIconRegistry } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { DomSanitizer } from "@angular/platform-browser";
 
-import { RouterModule } from '@angular/router';
+import { RouterModule } from "@angular/router";
 
 @Component({
-  selector: 'app-contact',
+  selector: "app-contact",
   imports: [
     CommonModule,
     RouterModule,
@@ -17,8 +17,8 @@ import { RouterModule } from '@angular/router';
     MatButtonModule, // Material Buttons
     MatIconModule,
   ],
-  templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss',
+  templateUrl: "./contact.component.html",
+  styleUrl: "./contact.component.scss",
 })
 export class ContactComponent {
   constructor(
@@ -29,9 +29,9 @@ export class ContactComponent {
   }
   private registerIcons() {
     this.iconRegistry.addSvgIcon(
-      'instagram',
+      "instagram",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        'icons/instagram.svg'
+        "icons/instagram.svg"
       )
     );
     // this.iconRegistry.addSvgIcon(

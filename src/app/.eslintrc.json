@@ -1,0 +1,12 @@
+{
+  "extends": "../../.eslintrc.json",
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "no-console": "off",         // app allows console
+        "quotes": ["error", "double"]
+      }
+    }
+  ]
+}

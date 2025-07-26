@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ExpressBuilderComponent } from './express-builder.component';
+import { ExpressBuilderComponent } from "./express-builder.component";
 
-describe('ExpressBuilderComponent', () => {
+describe("ExpressBuilderComponent", () => {
   let component: ExpressBuilderComponent;
   let fixture: ComponentFixture<ExpressBuilderComponent>;
 
@@ -17,7 +17,7 @@ describe('ExpressBuilderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

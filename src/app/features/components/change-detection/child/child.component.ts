@@ -5,14 +5,14 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
-} from '@angular/core';
-import { ICourse } from '../cource';
+} from "@angular/core";
+import { ICourse } from "../cource";
 
 @Component({
-  selector: 'app-child',
+  selector: "app-child",
   imports: [],
-  templateUrl: './child.component.html',
-  styleUrl: './child.component.scss',
+  templateUrl: "./child.component.html",
+  styleUrl: "./child.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush, 
 })
 export class ChildComponent implements OnChanges {
@@ -24,7 +24,7 @@ export class ChildComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('ChildComponent ngOnChanges:', changes);
+    console.log("ChildComponent ngOnChanges:", changes);
   }
 
   

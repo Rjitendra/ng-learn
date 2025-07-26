@@ -3,21 +3,21 @@ import {
   ChangeDetectorRef,
   Component,
   OnInit,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { IProductDto, OperationType } from '../../models/iproduct';
-import { ProductService } from '../../service/product-service';
-import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
-import { tap, switchMap } from 'rxjs/operators';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+} from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { IProductDto, OperationType } from "../../models/iproduct";
+import { ProductService } from "../../service/product-service";
+import { FormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
+import { MatListModule } from "@angular/material/list";
+import { MatIconModule } from "@angular/material/icon";
+import { tap, switchMap } from "rxjs/operators";
+import { BehaviorSubject, Observable, of } from "rxjs";
 
 @Component({
-  selector: 'app-product-crud',
+  selector: "app-product-crud",
   imports: [
     CommonModule,
     FormsModule,
@@ -27,8 +27,8 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
     MatListModule,
     MatIconModule,
   ],
-  templateUrl: './product-crud.component.html',
-  styleUrl: './product-crud.component.scss',
+  templateUrl: "./product-crud.component.html",
+  styleUrl: "./product-crud.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCrudComponent implements OnInit {
@@ -56,8 +56,8 @@ export class ProductCrudComponent implements OnInit {
   private getEmptyProduct(): IProductDto {
     return {
       id: 0,
-      title: '',
-      description: '',
+      title: "",
+      description: "",
       price: 0,
       isValid: true,
       operationType: OperationType.Create,

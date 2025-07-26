@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-interview-question',
+  selector: "app-interview-question",
   imports: [],
-  templateUrl: './interview-question.component.html',
-  styleUrl: './interview-question.component.scss'
+  templateUrl: "./interview-question.component.html",
+  styleUrl: "./interview-question.component.scss"
 })
 export class InterviewQuestionComponent {
 

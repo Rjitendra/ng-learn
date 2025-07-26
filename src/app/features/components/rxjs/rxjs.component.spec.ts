@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { RxjsComponent } from './rxjs.component';
+import { RxjsComponent } from "./rxjs.component";
 
-describe('RxjsComponent', () => {
+describe("RxjsComponent", () => {
   let component: RxjsComponent;
   let fixture: ComponentFixture<RxjsComponent>;
 
@@ -17,7 +17,7 @@ describe('RxjsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
