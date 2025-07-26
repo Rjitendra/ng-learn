@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-reactive-form',
   imports: [],
   templateUrl: './reactive-form.component.html',
-  styleUrl: './reactive-form.component.scss'
+  styleUrl: './reactive-form.component.scss',
 })
-export class ReactiveFormComponent {
-
-}
+export class ReactiveFormComponent {}

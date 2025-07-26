@@ -4,7 +4,7 @@ import { NAVITEMS } from '../app.nav';
 
 @Component({
   selector: 'app-layout',
-  imports: [LibLayoutComponent,NgAlertComponent],
+  imports: [LibLayoutComponent, NgAlertComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })

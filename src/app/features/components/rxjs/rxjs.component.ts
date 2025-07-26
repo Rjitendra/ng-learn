@@ -115,76 +115,76 @@ counter$.next(1);</code></pre>
 
   ngOnInit(): void {
     this.data$ = concat(numbers$).pipe(
-      tap((value) => {
-      //  this.tape1 = value;
+      tap(value => {
+        //  this.tape1 = value;
         console.log('Value before map:', value);
       }),
-      map((value) => {
+      map(value => {
         console.log('Value inside map:', value);
         return value; // Example transformation: double the value
       }),
-      switchMap((value) => {
+      switchMap(value => {
         console.log('Value inside switchMap:', value);
         return of(value);
-      })
+      }),
     );
 
-    const numbers1$ = of(1, 2, 3).pipe(
-      tap((value) => console.log('Inside numbers1$ tap:', value))
-    );
+    const numbers1$ = of(1, 2, 3).pipe(tap(value => console.log('Inside numbers1$ tap:', value)));
 
+    // Mock services
+    const getUserProfile = () => of({ userId: 1, name: 'John Doe' }).pipe(delay(500));
 
+    const getUserProjects = (userId: number) =>
+      of([
+        { projectId: 101, title: 'Project A' },
+        { projectId: 102, title: 'Project B' },
+      ]).pipe(delay(500));
 
+    const getProjectDetails = (projectId: number) =>
+      of({ projectId, description: `Details of project ${projectId}` }).pipe(delay(300));
 
-// Mock services
-const getUserProfile = () => of({ userId: 1, name: 'John Doe' }).pipe(delay(500));
+    const getProjectStats = (projectId: number) =>
+      forkJoin({
+        stars: of(Math.floor(Math.random() * 100)).pipe(delay(200)),
+        forks: of(Math.floor(Math.random() * 50)).pipe(delay(300)),
+        watchers: of(Math.floor(Math.random() * 75)).pipe(delay(250)),
+      });
 
-const getUserProjects = (userId: number) =>
-  of([
-    { projectId: 101, title: 'Project A' },
-    { projectId: 102, title: 'Project B' }
-  ]).pipe(delay(500));
+    getUserProfile()
+      .pipe(
+        tap(user => console.log('User Profile:', user)),
 
-const getProjectDetails = (projectId: number) =>
-  of({ projectId, description: `Details of project ${projectId}` }).pipe(delay(300));
+        switchMap(user =>
+          getUserProjects(user.userId).pipe(
+            tap(projects => console.log('User Projects:', projects)),
 
-const getProjectStats = (projectId: number) =>
-  forkJoin({
-    stars: of(Math.floor(Math.random() * 100)).pipe(delay(200)),
-    forks: of(Math.floor(Math.random() * 50)).pipe(delay(300)),
-    watchers: of(Math.floor(Math.random() * 75)).pipe(delay(250)),
-  });
+            // Fetch each project detail sequentially
+            switchMap(projects =>
+              concat(
+                ...projects.map(project =>
+                  getProjectDetails(project.projectId).pipe(
+                    tap(detail => console.log('Project Detail:', detail)),
 
+                    // For each project detail, fetch stats concurrently
+                    switchMap(detail =>
+                      getProjectStats(detail.projectId).pipe(
+                        tap(stats => console.log('Project Stats:', stats)),
 
-  getUserProfile().pipe(
-    tap(user => console.log('User Profile:', user)),
-    
-    switchMap(user => getUserProjects(user.userId).pipe(
-      tap(projects => console.log('User Projects:', projects)),
-  
-      // Fetch each project detail sequentially
-      switchMap(projects => concat(...projects.map(project =>
-        getProjectDetails(project.projectId).pipe(
-          tap(detail => console.log('Project Detail:', detail)),
-  
-          // For each project detail, fetch stats concurrently
-          switchMap(detail => getProjectStats(detail.projectId).pipe(
-            tap(stats => console.log('Project Stats:', stats)),
-  
-            map(stats => ({
-              ...detail,
-              stats
-            }))
-          ))
-        )
-      )))
-    ))
-  ).subscribe(finalData => {
-    console.log('📦 Final Project Data with Stats:', finalData);
-  });
-  
-
-
-
+                        map(stats => ({
+                          ...detail,
+                          stats,
+                        })),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      )
+      .subscribe(finalData => {
+        console.log('📦 Final Project Data with Stats:', finalData);
+      });
   }
 }

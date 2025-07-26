@@ -1,12 +1,10 @@
 {
   "extends": "../../.eslintrc.json",
-  "parser": "@typescript-eslint/parser",
   "overrides": [
     {
       "files": ["*.ts"],
       "rules": {
-        "no-console": "off", // app allows console
-        "quotes": ["error", "single"]
+        "no-console": "off"
       }
     }
   ]

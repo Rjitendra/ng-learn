@@ -13,19 +13,14 @@ import { ICourse } from '../cource';
   imports: [],
   templateUrl: './child.component.html',
   styleUrl: './child.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush, 
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChildComponent implements OnChanges {
   @Input() courses!: ICourse[];
-  
 
-  constructor(private $cd: ChangeDetectorRef) {
-   
-  }
+  constructor(private $cd: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log('ChildComponent ngOnChanges:', changes);
   }
-
-  
 }

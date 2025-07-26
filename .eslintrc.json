@@ -4,16 +4,23 @@
   "overrides": [
     {
       "files": ["*.ts"],
-      "extends": ["plugin:@angular-eslint/recommended"],
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:prettier/recommended" // 🔥 Add this
+      ],
       "rules": {
         "@angular-eslint/prefer-inject": "off",
-        "semi": ["error", "always"]
+        "semi": ["error", "always"],
+        "prettier/prettier": "error" // ✅ Show formatting issues as ESLint errors
       }
     },
     {
-      "files": ["*.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended"],
-      "rules": {}
+      "files": ["*.component.html"],
+      "parser": "@angular-eslint/template-parser",
+      "plugins": ["@angular-eslint/template"],
+      "rules": {
+        "@angular-eslint/template/self-closing-tag": "off"
+      }
     }
   ]
 }

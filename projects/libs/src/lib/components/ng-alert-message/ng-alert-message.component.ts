@@ -20,7 +20,7 @@ export class NgAlertMessageComponent implements OnInit {
   @Output() clearAlert: EventEmitter<number> = new EventEmitter<number>();
 
   ngOnInit(): void {
-   // this.alertType = this.alertType || 'info';
+    // this.alertType = this.alertType || 'info';
   }
   onCloseAlert(id: number): void {
     this.clearAlert.emit(id);

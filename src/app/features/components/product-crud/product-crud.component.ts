@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IProductDto, OperationType } from '../../models/iproduct';
 import { ProductService } from '../../service/product-service';
@@ -32,9 +27,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCrudComponent implements OnInit {
-  private modelSubject = new BehaviorSubject<IProductDto>(
-    this.getEmptyProduct()
-  );
+  private modelSubject = new BehaviorSubject<IProductDto>(this.getEmptyProduct());
 
   products$!: Observable<IProductDto[]>;
   products: IProductDto[] = [];
@@ -42,17 +35,16 @@ export class ProductCrudComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private $cd: ChangeDetectorRef
+    private $cd: ChangeDetectorRef,
   ) {
     const name = 'Angular';
-
   }
 
   ngOnInit(): void {
     this.products$ = this.productService.getAll().pipe(
       tap((products: IProductDto[]) => {
-        this.products = products.filter((x) => x.isDeleted == false);
-      })
+        this.products = products.filter(x => x.isDeleted == false);
+      }),
     );
   }
 
@@ -69,9 +61,7 @@ export class ProductCrudComponent implements OnInit {
 
   save(): void {
     const opertionalType =
-      this.modelSubject.value.id === 0
-        ? OperationType.Create
-        : OperationType.Update;
+      this.modelSubject.value.id === 0 ? OperationType.Create : OperationType.Update;
     const obs$ = this.productService.save({
       ...this.modelSubject.value,
       operationType: opertionalType,
@@ -84,22 +74,20 @@ export class ProductCrudComponent implements OnInit {
           if (opertionalType === OperationType.Create) {
             this.products.push(res);
           } else {
-            const index = this.products.findIndex((p) => p.pkId === res.pkId);
+            const index = this.products.findIndex(p => p.pkId === res.pkId);
             this.products[index] = res;
           }
           this.products$ = of([...this.products]);
           this.$cd.detectChanges();
           this.modelSubject.next(this.getEmptyProduct());
-        })
+        }),
       )
       .subscribe();
   }
 
   saveAsDraft(): void {
     const opertionalType =
-      this.modelSubject.value.id === 0
-        ? OperationType.Create
-        : OperationType.Update;
+      this.modelSubject.value.id === 0 ? OperationType.Create : OperationType.Update;
     const obs$ = this.productService.save({
       ...this.modelSubject.value,
       operationType: opertionalType,
@@ -112,13 +100,13 @@ export class ProductCrudComponent implements OnInit {
           if (opertionalType === OperationType.Create) {
             this.products.push(res);
           } else {
-            const index = this.products.findIndex((p) => p.pkId === res.pkId);
+            const index = this.products.findIndex(p => p.pkId === res.pkId);
             this.products[index] = res;
           }
           this.products$ = of([...this.products]);
           this.$cd.detectChanges();
           this.modelSubject.next(this.getEmptyProduct());
-        })
+        }),
       )
       .subscribe();
   }
@@ -136,14 +124,14 @@ export class ProductCrudComponent implements OnInit {
     obs$
       .pipe(
         tap((res: IProductDto) => {
-          const index = this.products.findIndex((p) => p.pkId === res.pkId);
+          const index = this.products.findIndex(p => p.pkId === res.pkId);
           if (index !== -1) {
             this.products.splice(index, 1); // ✅ removes the item at index
             this.products$ = of([...this.products]); // ✅ emit new value
           }
           this.$cd.detectChanges();
           this.modelSubject.next(this.getEmptyProduct());
-        })
+        }),
       )
       .subscribe();
   }
@@ -157,15 +145,13 @@ export class ProductCrudComponent implements OnInit {
       .pipe(
         tap((res: IProductDto) => {
           if (!res) {
-            const index = this.products.findIndex(
-              (p) => p.pkId === product.pkId
-            );
+            const index = this.products.findIndex(p => p.pkId === product.pkId);
             if (index !== -1) {
               this.products.splice(index, 1);
-               this.products$ = of([...this.products]);
+              this.products$ = of([...this.products]);
             }
           } else {
-            const index = this.products.findIndex((p) => p.pkId === res.pkId);
+            const index = this.products.findIndex(p => p.pkId === res.pkId);
             if (index !== -1) {
               this.products[index] = res; // ✅ updates the item at index
               this.products$ = of([...this.products]); // ✅ emit new value
@@ -173,7 +159,7 @@ export class ProductCrudComponent implements OnInit {
           }
           this.$cd.detectChanges();
           this.modelSubject.next(this.getEmptyProduct());
-        })
+        }),
       )
       .subscribe();
   }

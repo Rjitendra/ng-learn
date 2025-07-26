@@ -8,9 +8,8 @@ describe('NgTreeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgTreeComponent]
-    })
-    .compileComponents();
+      imports: [NgTreeComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NgTreeComponent);
     component = fixture.componentInstance;

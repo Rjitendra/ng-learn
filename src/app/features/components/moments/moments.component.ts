@@ -9,7 +9,7 @@ interface Moment {
   selector: 'app-moments',
   imports: [CommonModule],
   templateUrl: './moments.component.html',
-  styleUrl: './moments.component.scss'
+  styleUrl: './moments.component.scss',
 })
 export class MomentsComponent {
   moments: Moment[] = [
@@ -20,7 +20,6 @@ export class MomentsComponent {
     { id: 5, imageUrl: 'moments/5.png', caption: 'Holi' },
     { id: 6, imageUrl: 'moments/6.png', caption: 'my seniors' },
     { id: 7, imageUrl: 'moments/7.png', caption: 'All legends in one frame' },
-    { id: 8, imageUrl: 'moments/8.png', caption: 'Myself' }
+    { id: 8, imageUrl: 'moments/8.png', caption: 'Myself' },
   ];
-
 }

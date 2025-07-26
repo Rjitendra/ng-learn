@@ -8,9 +8,7 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "paths": {
-      "libs": [
-        "./dist/libs"
-      ]
+      "libs": ["./dist/libs"]
     },
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,

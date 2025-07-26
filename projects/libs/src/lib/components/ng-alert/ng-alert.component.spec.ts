@@ -8,9 +8,8 @@ describe('NgAlertComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgAlertComponent]
-    })
-    .compileComponents();
+      imports: [NgAlertComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NgAlertComponent);
     component = fixture.componentInstance;

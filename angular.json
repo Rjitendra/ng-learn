@@ -29,10 +29,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
-            ],
+            "styles": ["@angular/material/prebuilt-themes/indigo-pink.css", "src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -86,17 +83,14 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "@angular/material/prebuilt-themes/azure-blue.css",
-              "src/styles.scss"
-            ],
+            "styles": ["@angular/material/prebuilt-themes/azure-blue.css", "src/styles.scss"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "eslintConfig": "src/app/.eslintrc.json",
+            "eslintConfig": ".eslintrc.json",
             "lintFilePatterns": ["src/app/**/*.ts", "src/app/**/*.html"]
           }
         }
@@ -139,10 +133,7 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "eslintConfig": "projects/libs/eslintrc.json",
-            "lintFilePatterns": [
-              "projects/my-lib/**/*.ts",
-              "projects/my-lib/**/*.html"
-            ]
+            "lintFilePatterns": ["projects/my-lib/**/*.ts", "projects/my-lib/**/*.html"]
           }
         }
       }

@@ -1,13 +1,6 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  ChangeDetectorRef,
-  ChangeDetectionStrategy,
-} from '@angular/core';
-import {
-  AlertService,
-  NgTreeComponent,
-} from '../../../../../projects/libs/src/public-api';
+import { Component, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { AlertService, NgTreeComponent } from '../../../../../projects/libs/src/public-api';
 import { delay, forkJoin, map, of, switchMap, tap } from 'rxjs';
 
 interface Course {
@@ -24,12 +17,12 @@ interface Course {
 export class ExpressBuilderComponent {
   constructor(
     private alertService: AlertService,
-    private $cd: ChangeDetectorRef
+    private $cd: ChangeDetectorRef,
   ) {
     this.rxjsExample();
   }
 
-  courses: Course[] = [ 
+  courses: Course[] = [
     { id: 1, name: 'Angular For Beginners' },
     { id: 2, name: 'Angular Core Deep Dive' },
     { id: 3, name: 'Angular Forms In Depth' },
@@ -85,9 +78,7 @@ export class ExpressBuilderComponent {
   rxjsExample() {
     // First set of parallel calls
     const fetchUserInfo$ = of({ id: 1, name: 'John Doe' }).pipe(delay(1000));
-    const fetchAccountSettings$ = of({ theme: 'dark', language: 'en' }).pipe(
-      delay(1200)
-    );
+    const fetchAccountSettings$ = of({ theme: 'dark', language: 'en' }).pipe(delay(1200));
 
     // Second set of parallel calls (might depend on user info)
     const fetchUserOrders$ = of([
@@ -136,12 +127,12 @@ export class ExpressBuilderComponent {
                 notifications,
                 user,
                 settings,
-              })
-            )
+              }),
+            ),
           );
-        })
+        }),
       )
-      .subscribe((result) => {
+      .subscribe(result => {
         console.log('✅ Second forkJoin result:', result);
       });
   }

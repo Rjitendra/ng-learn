@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-interview-question',
   imports: [],
   templateUrl: './interview-question.component.html',
-  styleUrl: './interview-question.component.scss'
+  styleUrl: './interview-question.component.scss',
 })
-export class InterviewQuestionComponent {
-
-}
+export class InterviewQuestionComponent {}

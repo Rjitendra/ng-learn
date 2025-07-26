@@ -17,7 +17,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { INav } from '../../models/inav';
 
-
 @Component({
   selector: 'lib-layout',
   imports: [
@@ -59,7 +58,7 @@ export class LibLayoutComponent implements AfterViewInit {
   toggleSidenav() {
     this.isExpanded = !this.isExpanded;
     this.isRotated = !this.isRotated;
-    
+
     setTimeout(() => {
       this.setWidthToToggle();
       // if (
@@ -81,7 +80,7 @@ export class LibLayoutComponent implements AfterViewInit {
 
   private closeAllChildren(item: INav) {
     if (item.children) {
-      item.children.forEach((child) => {
+      item.children.forEach(child => {
         child.expanded = false;
         this.closeAllChildren(child); // Recursive call for deep nesting
       });

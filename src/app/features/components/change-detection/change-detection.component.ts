@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ChildComponent } from './child/child.component';
 import { CommonModule } from '@angular/common';
 import { ICourse } from './cource';
@@ -47,10 +42,10 @@ export class ChangeDetectionComponent implements OnInit {
 
   // 2. Using markForCheck() - schedules CD on next cycle - view WILL update soon after
   updateWithMarkForCheck() {
-      this.courses = [
-        { ...this.courses[0], name: 'Updated WITH markForCheck' },
-        ...this.courses.slice(1),
-      ];
+    this.courses = [
+      { ...this.courses[0], name: 'Updated WITH markForCheck' },
+      ...this.courses.slice(1),
+    ];
     // setTimeout(() => {
     //   this.courses = [
     //     { ...this.courses[0], name: 'Updated WITH markForCheck' },

@@ -40,8 +40,6 @@
 </mat-list>
 } -->
 
-
-
 <h1 class="page-title">Product Manager</h1>
 
 <div class="form-container" *ngIf="model$ | async as model">
@@ -55,22 +53,48 @@
 
       <mat-form-field appearance="fill" class="form-field">
         <mat-label>Description</mat-label>
-        <input matInput name="description" [(ngModel)]="model.description" required #description="ngModel" />
-        <mat-error *ngIf="description.invalid && description.touched">Description is required</mat-error>
+        <input
+          matInput
+          name="description"
+          [(ngModel)]="model.description"
+          required
+          #description="ngModel"
+        />
+        <mat-error *ngIf="description.invalid && description.touched"
+          >Description is required</mat-error
+        >
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="form-field">
         <mat-label>Price</mat-label>
-        <input matInput type="number" name="price" [(ngModel)]="model.price" required min="0" #price="ngModel" />
+        <input
+          matInput
+          type="number"
+          name="price"
+          [(ngModel)]="model.price"
+          required
+          min="0"
+          #price="ngModel"
+        />
         <mat-error *ngIf="price.invalid && price.touched">Price is required</mat-error>
       </mat-form-field>
 
       <div class="button-group">
-        <button mat-raised-button color="primary" (click)="save()" [disabled]="!productForm.form.valid">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="save()"
+          [disabled]="!productForm.form.valid"
+        >
           Save
         </button>
 
-        <button mat-raised-button color="accent" (click)="saveAsDraft()" [disabled]="!productForm.form.valid">
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="saveAsDraft()"
+          [disabled]="!productForm.form.valid"
+        >
           Save As Draft
         </button>
       </div>
@@ -78,16 +102,13 @@
   </mat-card>
 </div>
 
-
 <hr />
 
 <div class="list-container" *ngIf="products$ | async as products">
   <div class="grid-wrapper">
     <mat-card class="product-card" *ngFor="let p of products">
       <div class="card-content">
-        <div class="product-title">
-          {{ p.title }} - ₹{{ p.price }}
-        </div>
+        <div class="product-title">{{ p.title }} - ₹{{ p.price }}</div>
         <div class="product-actions">
           <button mat-stroked-button color="primary" (click)="edit(p)">Edit</button>
           <button mat-stroked-button color="warn" (click)="delete(p)">Delete</button>

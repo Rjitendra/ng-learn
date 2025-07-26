@@ -6,5 +6,5 @@ export enum InputType {
   Date = 'date',
   Tel = 'tel',
   Url = 'url',
-  Search = 'search'
+  Search = 'search',
 }

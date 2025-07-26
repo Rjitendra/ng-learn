@@ -7,28 +7,21 @@ import { Alert } from '../../models/alert';
 import { CommonModule } from '@angular/common';
 import { AlertService } from '../../services/alert.service';
 import { NgAlertMessageComponent } from '../ng-alert-message/ng-alert-message.component';
-import { v4 as uuidv4 } from 'uuid'; 
+import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'ng-alert',
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    NgAlertMessageComponent,
-  ],
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, NgAlertMessageComponent],
   templateUrl: './ng-alert.component.html',
-  styleUrl: './ng-alert.component.scss'
-
+  styleUrl: './ng-alert.component.scss',
 })
 export class NgAlertComponent implements OnInit, OnDestroy {
   alerts: Alert[] = [];
   constructor(private alertService: AlertService) {}
 
   ngOnInit(): void {
-    this.alertService.getAlert().subscribe((alert) => {
+    this.alertService.getAlert().subscribe(alert => {
       if (alert.errors?.length) {
-        alert.id = uuidv4(); 
+        alert.id = uuidv4();
         this.alerts.push(alert);
         if (alert.timeout) {
           const id = alert.id;
@@ -39,7 +32,6 @@ export class NgAlertComponent implements OnInit, OnDestroy {
             }
           }, alert.timeout);
         }
-       
       } else {
         this.alerts = [];
       }

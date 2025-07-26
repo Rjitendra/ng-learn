@@ -23,16 +23,14 @@ import { RouterModule } from '@angular/router';
 export class ContactComponent {
   constructor(
     private iconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
   ) {
     this.registerIcons();
   }
   private registerIcons() {
     this.iconRegistry.addSvgIcon(
       'instagram',
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        'icons/instagram.svg'
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl('icons/instagram.svg'),
     );
     // this.iconRegistry.addSvgIcon(
     //   'linkedin',

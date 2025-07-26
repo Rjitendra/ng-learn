@@ -8,9 +8,8 @@ describe('NgInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgInputComponent]
-    })
-    .compileComponents();
+      imports: [NgInputComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NgInputComponent);
     component = fixture.componentInstance;

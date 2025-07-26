@@ -65,7 +65,7 @@ export const NAVITEMS: INav[] = [
       },
     ],
   },
-   {
+  {
     name: 'Product',
     url: 'product',
     icon: 'shopping_cart',

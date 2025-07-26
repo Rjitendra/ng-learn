@@ -6,6 +6,10 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),provideHttpClient(), // ✅ Fix Material Icons HTTP Error
-    provideAnimations()] // ✅ Required for Material animations]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideHttpClient(), // ✅ Fix Material Icons HTTP Error
+    provideAnimations(),
+  ], // ✅ Required for Material animations]
 };

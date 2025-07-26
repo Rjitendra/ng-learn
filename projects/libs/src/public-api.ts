@@ -4,7 +4,7 @@
 
 export * from './lib/components/layout/layout.component';
 export * from './lib/models/inav';
-export * from './lib/components/ng-alert-message/ng-alert-message.component'
+export * from './lib/components/ng-alert-message/ng-alert-message.component';
 export * from './lib/components/ng-alert/ng-alert.component';
 export * from './lib/components/ng-tree/ng-tree.component';
 export * from './lib/services/alert.service';
