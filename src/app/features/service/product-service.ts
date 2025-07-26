@@ -1,15 +1,15 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 // Update the path below to the correct location of your product DTO interface
-import { IProductDto } from "../models/iproduct";
+import { IProductDto } from '../models/iproduct';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class ProductService {
-  private baseUrl = "https://localhost:5000/api/product";
+  private baseUrl = 'https://localhost:5000/api/product';
 
   constructor(private http: HttpClient) {}
 
@@ -23,10 +23,10 @@ export class ProductService {
 
   save(product: IProductDto): Observable<IProductDto> {
     return this.http.post<IProductDto>(
-      "https://localhost:5000/api/product/save",
+      'https://localhost:5000/api/product/save',
       product,{
       headers: new HttpHeaders({
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       })
     }
     );
@@ -34,10 +34,10 @@ export class ProductService {
 
     discardDraft(product: IProductDto): Observable<IProductDto> {
     return this.http.post<IProductDto>(
-      "https://localhost:5000/api/product/discard-draft",
+      'https://localhost:5000/api/product/discard-draft',
       product,{
       headers: new HttpHeaders({
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       })
     }
     );

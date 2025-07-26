@@ -1,6 +1,6 @@
-import { CommonModule } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
-import { concat, delay, forkJoin, map, Observable, of, single, switchMap, tap } from "rxjs";
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { concat, delay, forkJoin, map, Observable, of, single, switchMap, tap } from 'rxjs';
 
 const numbers$ = of([1, 2, 3]); //emit single
 // onst numbers$ = of(1, 2, 3); //emit multiple values
@@ -12,10 +12,10 @@ const numbers$ = of([1, 2, 3]); //emit single
 // const numbers$ = of(1, 2, 3).pipe(single((value) => value > 2, () => 'No value emitted', () => 'No value emitted', () => 'No value emitted')); //emit single value with condition and default value and error message and error message
 
 @Component({
-  selector: "app-rxjs",
+  selector: 'app-rxjs',
   imports: [CommonModule],
-  templateUrl: "./rxjs.component.html",
-  styleUrl: "./rxjs.component.scss",
+  templateUrl: './rxjs.component.html',
+  styleUrl: './rxjs.component.scss',
 })
 export class RxjsComponent implements OnInit {
   rxjsContent: string = `
@@ -117,32 +117,32 @@ counter$.next(1);</code></pre>
     this.data$ = concat(numbers$).pipe(
       tap((value) => {
       //  this.tape1 = value;
-        console.log("Value before map:", value);
+        console.log('Value before map:', value);
       }),
       map((value) => {
-        console.log("Value inside map:", value);
+        console.log('Value inside map:', value);
         return value; // Example transformation: double the value
       }),
       switchMap((value) => {
-        console.log("Value inside switchMap:", value);
+        console.log('Value inside switchMap:', value);
         return of(value);
       })
     );
 
     const numbers1$ = of(1, 2, 3).pipe(
-      tap((value) => console.log("Inside numbers1$ tap:", value))
+      tap((value) => console.log('Inside numbers1$ tap:', value))
     );
 
 
 
 
 // Mock services
-const getUserProfile = () => of({ userId: 1, name: "John Doe" }).pipe(delay(500));
+const getUserProfile = () => of({ userId: 1, name: 'John Doe' }).pipe(delay(500));
 
 const getUserProjects = (userId: number) =>
   of([
-    { projectId: 101, title: "Project A" },
-    { projectId: 102, title: "Project B" }
+    { projectId: 101, title: 'Project A' },
+    { projectId: 102, title: 'Project B' }
   ]).pipe(delay(500));
 
 const getProjectDetails = (projectId: number) =>
@@ -157,19 +157,19 @@ const getProjectStats = (projectId: number) =>
 
 
   getUserProfile().pipe(
-    tap(user => console.log("User Profile:", user)),
+    tap(user => console.log('User Profile:', user)),
     
     switchMap(user => getUserProjects(user.userId).pipe(
-      tap(projects => console.log("User Projects:", projects)),
+      tap(projects => console.log('User Projects:', projects)),
   
       // Fetch each project detail sequentially
       switchMap(projects => concat(...projects.map(project =>
         getProjectDetails(project.projectId).pipe(
-          tap(detail => console.log("Project Detail:", detail)),
+          tap(detail => console.log('Project Detail:', detail)),
   
           // For each project detail, fetch stats concurrently
           switchMap(detail => getProjectStats(detail.projectId).pipe(
-            tap(stats => console.log("Project Stats:", stats)),
+            tap(stats => console.log('Project Stats:', stats)),
   
             map(stats => ({
               ...detail,
@@ -180,7 +180,7 @@ const getProjectStats = (projectId: number) =>
       )))
     ))
   ).subscribe(finalData => {
-    console.log("📦 Final Project Data with Stats:", finalData);
+    console.log('📦 Final Project Data with Stats:', finalData);
   });
   
 

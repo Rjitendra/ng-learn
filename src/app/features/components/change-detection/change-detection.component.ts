@@ -3,23 +3,23 @@ import {
   ChangeDetectorRef,
   Component,
   OnInit,
-} from "@angular/core";
-import { ChildComponent } from "./child/child.component";
-import { CommonModule } from "@angular/common";
-import { ICourse } from "./cource";
+} from '@angular/core';
+import { ChildComponent } from './child/child.component';
+import { CommonModule } from '@angular/common';
+import { ICourse } from './cource';
 
 @Component({
-  selector: "app-change-detection",
+  selector: 'app-change-detection',
   imports: [CommonModule, ChildComponent],
-  templateUrl: "./change-detection.component.html",
-  styleUrl: "./change-detection.component.scss",
+  templateUrl: './change-detection.component.html',
+  styleUrl: './change-detection.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChangeDetectionComponent implements OnInit {
   courses: ICourse[] = [
-    { id: 1, name: "Angular For Beginners" },
-    { id: 2, name: "Angular Core Deep Dive" },
-    { id: 3, name: "Angular Forms In Depth" },
+    { id: 1, name: 'Angular For Beginners' },
+    { id: 2, name: 'Angular Core Deep Dive' },
+    { id: 3, name: 'Angular Forms In Depth' },
   ];
   constructor(private $cd: ChangeDetectorRef) {}
 
@@ -28,7 +28,7 @@ export class ChangeDetectionComponent implements OnInit {
   }
   autoUpdate() {
     setTimeout(() => {
-      this.courses = [...this.courses, { id: 4, name: "Updated course" }];
+      this.courses = [...this.courses, { id: 4, name: 'Updated course' }];
       this.$cd.detectChanges();
       // No cd.markForCheck() or cd.detectChanges()
     }, 1000);
@@ -36,7 +36,7 @@ export class ChangeDetectionComponent implements OnInit {
   // 1. No manual CD call - view will NOT update immediately
   updateWithoutMarkForCheck() {
     setTimeout(() => {
-      this.courses = [...this.courses, { id: 4, name: "Updated course" }];
+      this.courses = [...this.courses, { id: 4, name: 'Updated course' }];
       //   this.courses.push({
       //     id: 5, name: 'Updated course 2',
       //   });
@@ -48,7 +48,7 @@ export class ChangeDetectionComponent implements OnInit {
   // 2. Using markForCheck() - schedules CD on next cycle - view WILL update soon after
   updateWithMarkForCheck() {
       this.courses = [
-        { ...this.courses[0], name: "Updated WITH markForCheck" },
+        { ...this.courses[0], name: 'Updated WITH markForCheck' },
         ...this.courses.slice(1),
       ];
     // setTimeout(() => {
@@ -63,7 +63,7 @@ export class ChangeDetectionComponent implements OnInit {
   // 3. Using detectChanges() - runs CD immediately - view updates right away
   updateWithDetectChanges() {
     setTimeout(() => {
-      this.courses[0].name = "Updated WITH detectChanges";
+      this.courses[0].name = 'Updated WITH detectChanges';
       this.$cd.detectChanges(); // Runs CD now, view updates immediately
     }, 200);
   }

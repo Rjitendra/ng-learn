@@ -6,6 +6,7 @@
       "files": ["*.ts"],
       "extends": ["plugin:@angular-eslint/recommended"],
       "rules": {
+        "@angular-eslint/prefer-inject": "off",
         "semi": ["error", "always"]
       }
     },

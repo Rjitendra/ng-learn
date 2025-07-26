@@ -1,0 +1,139 @@
+# ✅ ESLint Configuration for Angular (Complete Guide)
+
+---
+
+## 1. 🧱 Install ESLint in Your Angular App
+
+If you haven't already installed ESLint, run the following:
+
+```bash
+ng add @angular-eslint/schematics
+```
+
+This will:
+- Remove TSLint (if present)
+- Add ESLint and required dependencies
+- Create a base ESLint config file (`.eslintrc.json`)
+
+---
+
+## 2. ⚙️ Create/Edit `.eslintrc.json` at Project Root
+
+```json
+{
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*",
+    "dist/",
+    "node_modules/",
+    "coverage/",
+    "**/*.spec.ts"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "semi": ["error", "always"],
+        "@angular-eslint/prefer-inject": "warn",
+        "@typescript-eslint/explicit-function-return-type": "off"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}
+```
+
+---
+
+## 3. 🚫 Create/Edit `.eslintignore` at Project Root
+
+```bash
+# Ignore compiled output and dependencies
+node_modules/
+dist/
+coverage/
+
+# Ignore build artifacts or temp files
+*.js
+*.map
+
+# Ignore test files
+**/*.spec.ts
+
+# Optionally ignore environment configs or mock data
+src/environments/
+```
+
+---
+
+## 4. 🔁 Add a Lint Script in `package.json`
+
+```json
+"scripts": {
+  "lint": "ng lint"
+}
+```
+
+---
+
+## 5. 🧪 Lint Your Project
+
+Run ESLint using:
+
+```bash
+npm run lint
+```
+
+Or directly with Angular CLI:
+
+```bash
+ng lint
+```
+
+---
+
+## 6. 🔌 Optional: Use ESLint Plugins
+
+Enhance linting with additional plugins:
+
+```bash
+npm install --save-dev eslint-plugin-import eslint-plugin-jsdoc eslint-plugin-unicorn
+```
+
+Then extend your `.eslintrc.json`:
+
+```json
+"extends": [
+  "plugin:@angular-eslint/recommended",
+  "plugin:@angular-eslint/template/process-inline-templates",
+  "plugin:import/recommended",
+  "plugin:jsdoc/recommended",
+  "plugin:unicorn/recommended"
+]
+```
+
+---
+
+## 7. 📝 Notes
+
+- If you're using a **multi-project** setup (or **Nx**), ensure each app/lib has its own `.eslintrc.json` that extends the root config.
+- The `overrides` block lets you define **separate rules** for TypeScript and HTML templates.
+
+---
+
+## ✅ Final Tip
+
+Your Angular project is now fully configured with ESLint!  
+You can save this guide as a file like `eslint-setup.md` or `eslint-guide.txt` for future reference.

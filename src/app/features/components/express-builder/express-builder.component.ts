@@ -1,24 +1,24 @@
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
-} from "@angular/core";
+} from '@angular/core';
 import {
   AlertService,
   NgTreeComponent,
-} from "../../../../../projects/libs/src/public-api";
-import { delay, forkJoin, map, of, switchMap, tap } from "rxjs";
+} from '../../../../../projects/libs/src/public-api';
+import { delay, forkJoin, map, of, switchMap, tap } from 'rxjs';
 
 interface Course {
   id: number;
   name: string;
 }
 @Component({
-  selector: "app-express-builder",
+  selector: 'app-express-builder',
   imports: [CommonModule, NgTreeComponent],
-  templateUrl: "./express-builder.component.html",
-  styleUrl: "./express-builder.component.scss",
+  templateUrl: './express-builder.component.html',
+  styleUrl: './express-builder.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpressBuilderComponent {
@@ -30,15 +30,15 @@ export class ExpressBuilderComponent {
   }
 
   courses: Course[] = [ 
-    { id: 1, name: "Angular For Beginners" },
-    { id: 2, name: "Angular Core Deep Dive" },
-    { id: 3, name: "Angular Forms In Depth" },
+    { id: 1, name: 'Angular For Beginners' },
+    { id: 2, name: 'Angular Core Deep Dive' },
+    { id: 3, name: 'Angular Forms In Depth' },
   ];
 
   // 1. No manual CD call - view will NOT update immediately
   updateWithoutMarkForCheck() {
     setTimeout(() => {
-      this.courses[0].name = "Updated WITHOUT markForCheck";
+      this.courses[0].name = 'Updated WITHOUT markForCheck';
       // No cd.markForCheck() or cd.detectChanges()
       // View might NOT update immediately because OnPush CD doesn't detect mutation here
     }, 1000);
@@ -47,7 +47,7 @@ export class ExpressBuilderComponent {
   // 2. Using markForCheck() - schedules CD on next cycle - view WILL update soon after
   updateWithMarkForCheck() {
     setTimeout(() => {
-      this.courses[0].name = "Updated WITH markForCheck";
+      this.courses[0].name = 'Updated WITH markForCheck';
       this.$cd.markForCheck(); // Schedules this component for CD on next cycle
     }, 1000);
   }
@@ -55,7 +55,7 @@ export class ExpressBuilderComponent {
   // 3. Using detectChanges() - runs CD immediately - view updates right away
   updateWithDetectChanges() {
     setTimeout(() => {
-      this.courses[0].name = "Updated WITH detectChanges";
+      this.courses[0].name = 'Updated WITH detectChanges';
       this.$cd.detectChanges(); // Runs CD now, view updates immediately
     }, 1000);
   }
@@ -65,39 +65,39 @@ export class ExpressBuilderComponent {
   }
   showAlert() {
     this.alertService.info({
-      errors: [{ message: "This is an info alert" }],
+      errors: [{ message: 'This is an info alert' }],
       timeout: 5000,
     });
     this.alertService.success({
-      errors: [{ message: "This is a success alert" }],
+      errors: [{ message: 'This is a success alert' }],
       timeout: 5000,
     });
     this.alertService.warning({
-      errors: [{ message: "This is a warning alert" }],
+      errors: [{ message: 'This is a warning alert' }],
       timeout: 5000,
     });
     this.alertService.error({
-      errors: [{ message: "This is an error alert" }],
+      errors: [{ message: 'This is an error alert' }],
     });
     //  this.$cd.detectChanges();
   }
 
   rxjsExample() {
     // First set of parallel calls
-    const fetchUserInfo$ = of({ id: 1, name: "John Doe" }).pipe(delay(1000));
-    const fetchAccountSettings$ = of({ theme: "dark", language: "en" }).pipe(
+    const fetchUserInfo$ = of({ id: 1, name: 'John Doe' }).pipe(delay(1000));
+    const fetchAccountSettings$ = of({ theme: 'dark', language: 'en' }).pipe(
       delay(1200)
     );
 
     // Second set of parallel calls (might depend on user info)
     const fetchUserOrders$ = of([
-      { id: 101, item: "Laptop", amount: 1200 },
-      { id: 102, item: "Phone", amount: 800 },
+      { id: 101, item: 'Laptop', amount: 1200 },
+      { id: 102, item: 'Phone', amount: 800 },
     ]).pipe(delay(800));
 
     const fetchUserNotifications$ = of([
-      { id: 201, message: "Order shipped", read: false },
-      { id: 202, message: "New support message", read: true },
+      { id: 201, message: 'Order shipped', read: false },
+      { id: 202, message: 'New support message', read: true },
     ]).pipe(delay(900));
 
     // Execute first forkJoin, then second one
@@ -107,7 +107,7 @@ export class ExpressBuilderComponent {
     })
       .pipe(
         switchMap((user, settings) => {
-          console.log("✅ First forkJoin result:", user, settings);
+          console.log('✅ First forkJoin result:', user, settings);
           // First forkJoin completed, now we can start the second one
 
           // Second forkJoin starts after first completes
@@ -118,7 +118,7 @@ export class ExpressBuilderComponent {
             settings: of(settings),
           }).pipe(
             tap(() => {
-              console.log("Second forkJoin completed");
+              console.log('Second forkJoin completed');
             }),
             map(
               ({
@@ -142,7 +142,7 @@ export class ExpressBuilderComponent {
         })
       )
       .subscribe((result) => {
-        console.log("✅ Second forkJoin result:", result);
+        console.log('✅ Second forkJoin result:', result);
       });
   }
 }
