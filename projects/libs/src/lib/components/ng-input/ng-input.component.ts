@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, forwardRef, input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -20,10 +20,10 @@ import { InputType } from '../../enums/input-type';
   ],
 })
 export class NgInputComponent implements ControlValueAccessor {
-  @Input() label = '';
-  @Input() placeholder = '';
-  @Input() type: InputType = InputType.Text;
-  @Input() disabled = false;
+  readonly label = input('');
+  readonly placeholder = input('');
+  readonly type = input<InputType>(InputType.Text);
+  readonly disabled = input(false);
 
   value: string | null = null;
 

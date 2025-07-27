@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { INav } from '../models/inav';
 
 import { RouterModule } from '@angular/router';
@@ -27,5 +27,5 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent {
-  @Input() item!: INav;
+  readonly item = input.required<INav>();
 }

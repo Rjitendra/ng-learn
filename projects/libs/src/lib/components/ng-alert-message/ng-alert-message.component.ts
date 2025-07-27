@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, input } from '@angular/core';
 import { MessageButton } from '../../models/alert';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,11 +12,11 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './ng-alert-message.component.scss',
 })
 export class NgAlertMessageComponent implements OnInit {
-  @Input() alertType!: string;
-  @Input() buttons!: MessageButton[];
-  @Input() id!: number;
-  @Input() messageText!: string;
-  @Input() hideCloseButton!: boolean;
+  readonly alertType = input.required<string>();
+  readonly buttons = input.required<MessageButton[]>();
+  readonly id = input.required<number>();
+  readonly messageText = input.required<string>();
+  readonly hideCloseButton = input.required<boolean>();
   @Output() clearAlert: EventEmitter<number> = new EventEmitter<number>();
 
   ngOnInit(): void {

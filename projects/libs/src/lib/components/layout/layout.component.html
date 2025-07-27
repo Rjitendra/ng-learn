@@ -43,7 +43,7 @@
   <mat-sidenav #sidenav mode="side" class="sidenav" [opened]="true" [class.collapsed]="!isExpanded">
     <div class="mat-nav-list">
       <mat-nav-list>
-        @for (item of navItems; track item) {
+        @for (item of navItems(); track item) {
           <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item }" />
         }
       </mat-nav-list>

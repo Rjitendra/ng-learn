@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, input } from '@angular/core';
 
 
 import { ButtonComponent } from './button.component';
@@ -30,13 +30,13 @@ import type { User } from './user';
           <h1>Acme</h1>
         </div>
         <div>
-          @if (user) {
+          @if (user()) {
             <div>
               <span class="welcome">
-                Welcome, <b>{{ user.name }}</b
+                Welcome, <b>{{ user().name }}</b
                 >!
               </span>
-              @if (user) {
+              @if (user()) {
                 <storybook-button
                   size="small"
                   (onClick)="onLogout.emit($event)"
@@ -45,9 +45,9 @@ import type { User } from './user';
               }
             </div>
           }
-          @if (!user) {
+          @if (!user()) {
             <div>
-              @if (!user) {
+              @if (!user()) {
                 <storybook-button
                   size="small"
                   class="margin-left"
@@ -55,7 +55,7 @@ import type { User } from './user';
                   label="Log in"
                 ></storybook-button>
               }
-              @if (!user) {
+              @if (!user()) {
                 <storybook-button
                   size="small"
                   [primary]="true"
@@ -72,8 +72,7 @@ import type { User } from './user';
   styleUrls: ['./header.css'],
 })
 export class HeaderComponent {
-  @Input()
-  user: User | null = null;
+  readonly user = input<User | null>(null);
 
   @Output()
   onLogin = new EventEmitter<Event>();

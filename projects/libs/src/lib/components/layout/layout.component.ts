@@ -4,8 +4,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  Input,
   ViewChild,
+  input
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -37,7 +37,7 @@ import { INav } from '../../models/inav';
 export class LibLayoutComponent implements AfterViewInit {
   @ViewChild('sidenav', { static: true }) sidenav!: MatSidenav;
   @ViewChild('toggleButton', { read: ElementRef }) toggleButton!: ElementRef;
-  @Input() navItems: INav[] = [];
+  readonly navItems = input<INav[]>([]);
 
   currentYear: number = new Date().getFullYear();
   isExpanded = false; // Default state is collapsed

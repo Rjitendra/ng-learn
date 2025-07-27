@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    @for (course of courses; track $index; let i = $index) {
+    @for (course of courses(); track $index; let i = $index) {
       <tr>
         <td>{{ i }}</td>
         <td>{{ course.name }}</td>

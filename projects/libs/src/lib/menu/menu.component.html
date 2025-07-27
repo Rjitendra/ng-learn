@@ -1,11 +1,11 @@
 <!-- Single Menu Item Template (Move Outside) -->
 
 <!-- Recursive Menu Structure -->
-@if (item.children) {
+@if (item().children) {
   <!-- Button to trigger submenu -->
-  <button mat-menu-item [matMenuTriggerFor]="subMenu" [matMenuTriggerData]="{ menudata: item }">
-    <mat-icon class="small-icon">{{ item.icon || 'help_outline' }}</mat-icon>
-    {{ item.name }}
+  <button mat-menu-item [matMenuTriggerFor]="subMenu" [matMenuTriggerData]="{ menudata: item() }">
+    <mat-icon class="small-icon">{{ item().icon || 'help_outline' }}</mat-icon>
+    {{ item().name }}
     <mat-icon class="small-icon">chevron_right</mat-icon>
   </button>
   <!-- Recursive Submenu -->

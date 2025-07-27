@@ -1,9 +1,9 @@
-<mat-card appearance="outlined" [ngClass]="alertType" class="alert-card">
+<mat-card appearance="outlined" [ngClass]="alertType()" class="alert-card">
   <mat-card-content class="alert-content">
-    <span class="message-text">{{ messageText }}</span>
-    @if (buttons.length) {
+    <span class="message-text">{{ messageText() }}</span>
+    @if (buttons().length) {
       <mat-card-actions class="alert-actions">
-        @for (btn of buttons; track $index; let i = $index) {
+        @for (btn of buttons(); track $index; let i = $index) {
           @if (!btn.isButton) {
             <span class="link-button" (click)="btn.click()">{{ btn.label }}</span>
           }
@@ -25,11 +25,11 @@
       </mat-card-actions>
     }
   </mat-card-content>
-  @if (!hideCloseButton) {
+  @if (!hideCloseButton()) {
     <button
       mat-icon-button
       color="warn"
-      (click)="onCloseAlert(id)"
+      (click)="onCloseAlert(id())"
       aria-label="Close"
       class="close-button"
     >
