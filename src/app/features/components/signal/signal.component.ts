@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -34,6 +34,10 @@ export class SignalComponent {
 
   constructor() {
     this.loadProducts();
+    effect(() => {
+      console.log(`💬 Model changed: ${JSON.stringify(this.model())}`);
+      console.log(`💬 Valid Products: ${JSON.stringify(this.validProducts())}`);
+    });
   }
 
   save(): void {
