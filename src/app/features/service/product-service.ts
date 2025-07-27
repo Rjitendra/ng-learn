@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 // Update the path below to the correct location of your product DTO interface
@@ -9,9 +9,14 @@ import { IProductDto } from '../models/iproduct';
   providedIn: 'root',
 })
 export class ProductService {
+  private http = inject(HttpClient);
+
   private baseUrl = 'https://localhost:5000/api/product';
 
-  constructor(private http: HttpClient) {}
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {}
 
   getAll(): Observable<IProductDto[]> {
     return this.http.get<IProductDto[]>(this.baseUrl);

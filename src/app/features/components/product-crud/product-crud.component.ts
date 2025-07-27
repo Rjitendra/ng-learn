@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -28,16 +28,19 @@ import { ProductService } from '../../service/product-service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCrudComponent implements OnInit {
+  private productService = inject(ProductService);
+  private $cd = inject(ChangeDetectorRef);
+
   private modelSubject = new BehaviorSubject<IProductDto>(this.getEmptyProduct());
 
   products$!: Observable<IProductDto[]>;
   products: IProductDto[] = [];
   model$ = this.modelSubject.asObservable();
 
-  constructor(
-    private productService: ProductService,
-    private $cd: ChangeDetectorRef,
-  ) {
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {
     const name = 'Angular';
   }
 

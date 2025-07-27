@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 
 import { ChildComponent } from './child/child.component';
 import { ICourse } from './cource';
@@ -12,12 +12,17 @@ import { ICourse } from './cource';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChangeDetectionComponent implements OnInit {
+  private $cd = inject(ChangeDetectorRef);
+
   courses: ICourse[] = [
     { id: 1, name: 'Angular For Beginners' },
     { id: 2, name: 'Angular Core Deep Dive' },
     { id: 3, name: 'Angular Forms In Depth' },
   ];
-  constructor(private $cd: ChangeDetectorRef) {}
+
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+  constructor() {}
 
   ngOnInit() {
     this.autoUpdate();

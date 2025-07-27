@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,8 +15,13 @@ import { v4 as uuidv4 } from 'uuid';
   styleUrl: './ng-alert.component.scss',
 })
 export class NgAlertComponent implements OnInit, OnDestroy {
+  private alertService = inject(AlertService);
+
   alerts: Alert[] = [];
-  constructor(private alertService: AlertService) {}
+
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+  constructor() {}
 
   ngOnInit(): void {
     this.alertService.getAlert().subscribe((alert) => {

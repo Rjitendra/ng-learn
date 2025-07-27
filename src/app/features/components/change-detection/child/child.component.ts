@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
 
 import { ICourse } from '../cource';
 
@@ -17,9 +10,14 @@ import { ICourse } from '../cource';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChildComponent implements OnChanges {
+  private $cd = inject(ChangeDetectorRef);
+
   @Input() courses!: ICourse[];
 
-  constructor(private $cd: ChangeDetectorRef) {}
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log('ChildComponent ngOnChanges:', changes);

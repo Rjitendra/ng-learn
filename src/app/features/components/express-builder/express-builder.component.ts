@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectorRef, ChangeDetectionStrategy, inject } from '@angular/core';
 import { delay, forkJoin, map, of, switchMap, tap } from 'rxjs';
 
 import { AlertService, NgTreeComponent } from '../../../../../projects/libs/src/public-api';
@@ -16,10 +16,13 @@ interface Course {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpressBuilderComponent {
-  constructor(
-    private alertService: AlertService,
-    private $cd: ChangeDetectorRef,
-  ) {
+  private alertService = inject(AlertService);
+  private $cd = inject(ChangeDetectorRef);
+
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {
     this.rxjsExample();
   }
 
