@@ -78,7 +78,12 @@ export const routes: Routes = [
           import('./features/components/product-price/product-price.component').then(
             (m) => m.ProductPriceComponent,
           ),
-      }, // Assuming ProductPriceComponent is used here)},
+      },
+      {
+        path: 'article/signal',
+        loadComponent: () =>
+          import('./features/components/signal/signal.component').then((m) => m.SignalComponent),
+      },
     ],
   },
 ];

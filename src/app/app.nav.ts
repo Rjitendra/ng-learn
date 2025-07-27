@@ -45,6 +45,11 @@ export const NAVITEMS: INav[] = [
         icon: '',
       },
       {
+        name: 'Angular Signal',
+        icon: '',
+        url: 'article/signal',
+      },
+      {
         name: 'RXJS',
         icon: '',
         url: 'article/rxjs',
@@ -73,6 +78,6 @@ export const NAVITEMS: INav[] = [
   {
     name: 'Product',
     url: 'product-price',
-    icon: 'shopping_cart',
+    icon: 'price_change',
   },
 ];
