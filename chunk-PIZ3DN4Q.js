@@ -1,0 +1,1 @@
+import{Ib as o,eb as n}from"./chunk-IDVU2DUC.js";var m=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["ng-template-driven-form"]],decls:1,vars:0,template:function(e,r){e&1&&o(0,"p")},encapsulation:2})};export{m as TemplateDrivenFormComponent};
