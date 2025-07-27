@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 
 import { ButtonComponent } from './button.component';
@@ -37,32 +37,29 @@ import type { User } from './user';
                 >!
               </span>
               @if (user()) {
-                <storybook-button
-                  size="small"
+                <storybook-button size="small"
                   (onClick)="onLogout.emit($event)"
                   label="Log out"
-                ></storybook-button>
+                 />
               }
             </div>
           }
           @if (!user()) {
             <div>
               @if (!user()) {
-                <storybook-button
-                  size="small"
+                <storybook-button size="small"
                   class="margin-left"
                   (onClick)="onLogin.emit($event)"
                   label="Log in"
-                ></storybook-button>
+                 />
               }
               @if (!user()) {
-                <storybook-button
-                  size="small"
+                <storybook-button size="small"
                   [primary]="true"
                   class="margin-left"
                   (onClick)="onCreateAccount.emit($event)"
                   label="Sign up"
-                ></storybook-button>
+                 />
               }
             </div>
           }
@@ -74,12 +71,9 @@ import type { User } from './user';
 export class HeaderComponent {
   readonly user = input<User | null>(null);
 
-  @Output()
-  onLogin = new EventEmitter<Event>();
+  readonly onLogin = output<Event>();
 
-  @Output()
-  onLogout = new EventEmitter<Event>();
+  readonly onLogout = output<Event>();
 
-  @Output()
-  onCreateAccount = new EventEmitter<Event>();
+  readonly onCreateAccount = output<Event>();
 }

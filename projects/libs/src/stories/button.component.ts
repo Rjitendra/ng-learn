@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Output, EventEmitter, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'storybook-button',
@@ -33,8 +33,7 @@ export class ButtonComponent {
   readonly label = input('Button');
 
   /** Optional click handler */
-  @Output()
-  onClick = new EventEmitter<Event>();
+  readonly onClick = output<Event>();
 
   public get classes(): string[] {
     const mode = this.primary() ? 'storybook-button--primary' : 'storybook-button--secondary';

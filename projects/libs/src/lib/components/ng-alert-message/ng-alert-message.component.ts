@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, input } from '@angular/core';
+import { Component, OnInit, input, output } from '@angular/core';
 import { MessageButton } from '../../models/alert';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,7 +17,7 @@ export class NgAlertMessageComponent implements OnInit {
   readonly id = input.required<number>();
   readonly messageText = input.required<string>();
   readonly hideCloseButton = input.required<boolean>();
-  @Output() clearAlert: EventEmitter<number> = new EventEmitter<number>();
+  readonly clearAlert = output<number>();
 
   ngOnInit(): void {
     // this.alertType = this.alertType || 'info';

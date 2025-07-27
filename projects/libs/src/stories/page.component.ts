@@ -9,12 +9,11 @@ import type { User } from './user';
   standalone: true,
   imports: [HeaderComponent],
   template: `<article>
-    <storybook-header
-      [user]="user"
+    <storybook-header [user]="user"
       (onLogout)="doLogout()"
       (onLogin)="doLogin()"
       (onCreateAccount)="doCreateAccount()"
-    ></storybook-header>
+     />
     <section class="storybook-page">
       <h2>Pages in Storybook</h2>
       <p>

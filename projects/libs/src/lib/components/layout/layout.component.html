@@ -56,7 +56,7 @@
     class="content"
     [ngClass]="{ 'content-expanded': isExpanded, 'content-collapsed': !isExpanded }"
     >
-    <ng-content select="ng-alert"></ng-content>
+    <ng-content select="ng-alert" />
     <div class="content-body"><router-outlet /></div>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -4,8 +4,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  ViewChild,
-  input
+  input,
+  viewChild
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -35,8 +35,8 @@ import { INav } from '../../models/inav';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LibLayoutComponent implements AfterViewInit {
-  @ViewChild('sidenav', { static: true }) sidenav!: MatSidenav;
-  @ViewChild('toggleButton', { read: ElementRef }) toggleButton!: ElementRef;
+  readonly sidenav = viewChild.required<MatSidenav>('sidenav');
+  readonly toggleButton = viewChild.required('toggleButton', { read: ElementRef });
   readonly navItems = input<INav[]>([]);
 
   currentYear: number = new Date().getFullYear();
@@ -87,8 +87,8 @@ export class LibLayoutComponent implements AfterViewInit {
     }
   }
   private setWidthToToggle() {
-    const sidenavWidth = this.sidenav._content.nativeElement.offsetWidth;
-    const offsetHeight = this.sidenav._content.nativeElement.offsetHeight;
-    this.toggleButton.nativeElement.style.width = `${sidenavWidth}px`;
+    const sidenavWidth = this.sidenav()._content.nativeElement.offsetWidth;
+    const offsetHeight = this.sidenav()._content.nativeElement.offsetHeight;
+    this.toggleButton().nativeElement.style.width = `${sidenavWidth}px`;
   }
 }
