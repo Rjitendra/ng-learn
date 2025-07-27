@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { concat, delay, forkJoin, map, Observable, of, single, switchMap, tap } from 'rxjs';
+import { concat, delay, forkJoin, map, Observable, of, switchMap, tap } from 'rxjs';
 
 const numbers$ = of([1, 2, 3]); //emit single
 // onst numbers$ = of(1, 2, 3); //emit multiple values
@@ -129,12 +129,10 @@ counter$.next(1);</code></pre>
       }),
     );
 
-    const numbers1$ = of(1, 2, 3).pipe(tap((value) => console.log('Inside numbers1$ tap:', value)));
-
     // Mock services
     const getUserProfile = () => of({ userId: 1, name: 'John Doe' }).pipe(delay(500));
 
-    const getUserProjects = (userId: number) =>
+    const getUserProjects = () =>
       of([
         { projectId: 101, title: 'Project A' },
         { projectId: 102, title: 'Project B' },
@@ -143,7 +141,7 @@ counter$.next(1);</code></pre>
     const getProjectDetails = (projectId: number) =>
       of({ projectId, description: `Details of project ${projectId}` }).pipe(delay(300));
 
-    const getProjectStats = (projectId: number) =>
+    const getProjectStats = () =>
       forkJoin({
         stars: of(Math.floor(Math.random() * 100)).pipe(delay(200)),
         forks: of(Math.floor(Math.random() * 50)).pipe(delay(300)),
@@ -154,8 +152,8 @@ counter$.next(1);</code></pre>
       .pipe(
         tap((user) => console.log('User Profile:', user)),
 
-        switchMap((user) =>
-          getUserProjects(user.userId).pipe(
+        switchMap(() =>
+          getUserProjects().pipe(
             tap((projects) => console.log('User Projects:', projects)),
 
             // Fetch each project detail sequentially
@@ -167,7 +165,7 @@ counter$.next(1);</code></pre>
 
                     // For each project detail, fetch stats concurrently
                     switchMap((detail) =>
-                      getProjectStats(detail.projectId).pipe(
+                      getProjectStats().pipe(
                         tap((stats) => console.log('Project Stats:', stats)),
 
                         map((stats) => ({

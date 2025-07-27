@@ -5,7 +5,7 @@ import {
   OnChanges,
   SimpleChanges,
   inject,
-  input
+  input,
 } from '@angular/core';
 
 import { ICourse } from '../cource';
@@ -18,12 +18,9 @@ import { ICourse } from '../cource';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChildComponent implements OnChanges {
-  private $cd = inject(ChangeDetectorRef);
-
   readonly courses = input.required<ICourse[]>();
 
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
+  private $cd = inject(ChangeDetectorRef);
 
   constructor() {}
 

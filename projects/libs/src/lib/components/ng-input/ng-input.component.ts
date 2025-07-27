@@ -43,7 +43,7 @@ export class NgInputComponent implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    (this.disabled as any).value = isDisabled;
   }
 
   handleInput(event: Event) {

@@ -1,4 +1,3 @@
-
 import { Component, ChangeDetectorRef, ChangeDetectionStrategy, inject } from '@angular/core';
 import { delay, forkJoin, map, of, switchMap, tap } from 'rxjs';
 
@@ -16,6 +15,11 @@ interface Course {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpressBuilderComponent {
+  courses: Course[] = [
+    { id: 1, name: 'Angular For Beginners' },
+    { id: 2, name: 'Angular Core Deep Dive' },
+    { id: 3, name: 'Angular Forms In Depth' },
+  ];
   private alertService = inject(AlertService);
   private $cd = inject(ChangeDetectorRef);
 
@@ -25,12 +29,6 @@ export class ExpressBuilderComponent {
   constructor() {
     this.rxjsExample();
   }
-
-  courses: Course[] = [
-    { id: 1, name: 'Angular For Beginners' },
-    { id: 2, name: 'Angular Core Deep Dive' },
-    { id: 3, name: 'Angular Forms In Depth' },
-  ];
 
   // 1. No manual CD call - view will NOT update immediately
   updateWithoutMarkForCheck() {
@@ -122,10 +120,10 @@ export class ExpressBuilderComponent {
                 user,
                 settings,
               }: {
-                orders: any;
-                notifications: any;
-                user: any;
-                settings: any;
+                orders: unknown;
+                notifications: unknown;
+                user: unknown;
+                settings: unknown;
               }) => ({
                 orders,
                 notifications,

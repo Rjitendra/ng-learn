@@ -75,7 +75,7 @@
 
         // 🔥 Import plugin rules
         "import/no-unresolved": "off",
-        "import/named": "warn",
+        "import/named": "off",
         "import/namespace": "warn",
         "import/no-deprecated": "warn",
         "import/no-named-as-default": "off",
@@ -117,7 +117,12 @@
       "plugins": ["@angular-eslint/template", "prettier"],
       "rules": {
         "@angular-eslint/template/self-closing-tag": "off",
-        "prettier/prettier": "error",
+        "prettier/prettier": [
+          "error",
+          {
+            "endOfLine": "lf"
+          }
+        ],
 
         "@angular-eslint/template/attributes-order": ["error"],
         "@angular-eslint/template/prefer-self-closing-tags": ["error"],

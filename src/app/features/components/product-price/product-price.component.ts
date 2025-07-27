@@ -1,4 +1,3 @@
-
 import { Component, computed, effect, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable, of, timer } from 'rxjs';

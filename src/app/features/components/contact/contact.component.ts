@@ -1,4 +1,3 @@
-
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
@@ -8,12 +7,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'ng-contact',
-  imports: [
-    RouterModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule
-],
+  imports: [RouterModule, MatInputModule, MatButtonModule, MatIconModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })

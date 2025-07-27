@@ -4,7 +4,7 @@
     <li>{{ i }}-{{ course.name }}</li>
   }
 </ul>
-<button (click)="updateWithoutMarkForCheck()">Update without markForCheck</button>
-<button (click)="updateWithMarkForCheck()">Update with markForCheck</button>
-<button (click)="updateWithDetectChanges()">Update with detectChanges</button>
+<button type="button" (click)="updateWithoutMarkForCheck()">Update without markForCheck</button>
+<button type="button" (click)="updateWithMarkForCheck()">Update with markForCheck</button>
+<button type="button" (click)="updateWithDetectChanges()">Update with detectChanges</button>
 <ng-child [courses]="courses" />
