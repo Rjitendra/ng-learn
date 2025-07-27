@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -7,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { tap, switchMap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 import { IProductDto, OperationType } from '../../models/iproduct';
 import { ProductService } from '../../service/product-service';
@@ -28,39 +34,26 @@ import { ProductService } from '../../service/product-service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCrudComponent implements OnInit {
-  private productService = inject(ProductService);
-  private $cd = inject(ChangeDetectorRef);
-
-  private modelSubject = new BehaviorSubject<IProductDto>(this.getEmptyProduct());
+  modelSubject = new BehaviorSubject<IProductDto>(this.getEmptyProduct());
 
   products$!: Observable<IProductDto[]>;
   products: IProductDto[] = [];
   model$ = this.modelSubject.asObservable();
 
+  private productService = inject(ProductService);
+  private $cd = inject(ChangeDetectorRef);
+
   /** Inserted by Angular inject() migration for backwards compatibility */
   constructor(...args: unknown[]);
 
-  constructor() {
-    const name = 'Angular';
-  }
+  constructor() {}
 
   ngOnInit(): void {
     this.products$ = this.productService.getAll().pipe(
       tap((products: IProductDto[]) => {
-        this.products = products.filter((x) => x.isDeleted == false);
+        this.products = products.filter((x) => x.isDeleted === false);
       }),
     );
-  }
-
-  private getEmptyProduct(): IProductDto {
-    return {
-      id: 0,
-      title: '',
-      description: '',
-      price: 0,
-      isValid: true,
-      operationType: OperationType.Create,
-    };
   }
 
   save(): void {
@@ -166,5 +159,16 @@ export class ProductCrudComponent implements OnInit {
         }),
       )
       .subscribe();
+  }
+
+  private getEmptyProduct(): IProductDto {
+    return {
+      id: 0,
+      title: '',
+      description: '',
+      price: 0,
+      isValid: true,
+      operationType: OperationType.Create,
+    };
   }
 }

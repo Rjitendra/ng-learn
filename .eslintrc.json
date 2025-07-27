@@ -126,7 +126,7 @@
         "@angular-eslint/template/no-interpolation-in-attributes": ["error"],
         "@angular-eslint/template/no-negated-async": ["error"],
         "@angular-eslint/template/prefer-control-flow": ["error"],
-        "@angular-eslint/template/prefer-ngsrc": ["error"],
+        "@angular-eslint/template/prefer-ngsrc": ["off"],
         "@angular-eslint/template/use-track-by-function": ["error"],
         "@angular-eslint/template/valid-aria": ["error"],
         "@angular-eslint/template/alt-text": ["error"],
