@@ -1,16 +1,17 @@
 import { Routes } from '@angular/router';
+
 import { AboutComponent } from './features/components/about/about.component';
+import { ChangeDetectionComponent } from './features/components/change-detection/change-detection.component';
 import { ContactComponent } from './features/components/contact/contact.component';
 import { ExpressBuilderComponent } from './features/components/express-builder/express-builder.component';
 import { HomeComponent } from './features/components/home/home.component';
-import { LayoutComponent } from './layout/layout.component';
 import { InterviewQuestionComponent } from './features/components/interview-question/interview-question.component';
-import { TemplateDrivenFormComponent } from './features/components/template-driven-form/template-driven-form.component';
 import { MomentsComponent } from './features/components/moments/moments.component';
-import { RxjsComponent } from './features/components/rxjs/rxjs.component';
-import { ChangeDetectionComponent } from './features/components/change-detection/change-detection.component';
 import { ProductCrudComponent } from './features/components/product-crud/product-crud.component';
 import { ProductPriceComponent } from './features/components/product-price/product-price.component';
+import { RxjsComponent } from './features/components/rxjs/rxjs.component';
+import { TemplateDrivenFormComponent } from './features/components/template-driven-form/template-driven-form.component';
+import { LayoutComponent } from './layout/layout.component';
 
 export const routes: Routes = [
   {

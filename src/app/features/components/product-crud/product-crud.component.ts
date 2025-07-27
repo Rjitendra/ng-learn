@@ -1,15 +1,16 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IProductDto, OperationType } from '../../models/iproduct';
-import { ProductService } from '../../service/product-service';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { tap, switchMap } from 'rxjs/operators';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { tap, switchMap } from 'rxjs/operators';
+
+import { IProductDto, OperationType } from '../../models/iproduct';
+import { ProductService } from '../../service/product-service';
 
 @Component({
   selector: 'ng-product-crud',

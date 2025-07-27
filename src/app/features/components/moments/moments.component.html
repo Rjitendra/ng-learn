@@ -3,9 +3,9 @@
 
   <!-- Display Static Images -->
   <div class="moments-grid">
-    <div class="moment-card" *ngFor="let moment of moments">
+    <div *ngFor="let moment of moments" class="moment-card">
       <div class="image-container">
-        <img [src]="moment.imageUrl" alt="Moment Image" />
+        <img alt="Moment Image" [src]="moment.imageUrl" />
       </div>
 
       <span class="caption-label">{{ moment.caption }}</span>

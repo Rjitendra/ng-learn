@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
-import { AlertService, NgTreeComponent } from '../../../../../projects/libs/src/public-api';
 import { delay, forkJoin, map, of, switchMap, tap } from 'rxjs';
+
+import { AlertService, NgTreeComponent } from '../../../../../projects/libs/src/public-api';
 
 interface Course {
   id: number;

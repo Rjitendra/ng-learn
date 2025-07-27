@@ -129,13 +129,6 @@
             "polyfills": ["zone.js", "zone.js/testing"]
           }
         },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "eslintConfig": "projects/libs/eslintrc.json",
-            "lintFilePatterns": ["projects/my-lib/**/*.ts", "projects/my-lib/**/*.html"]
-          }
-        },
         "storybook": {
           "builder": "@storybook/angular:start-storybook",
           "options": {

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { Observable } from 'rxjs';
+
 // Update the path below to the correct location of your product DTO interface
 import { IProductDto } from '../models/iproduct';
 

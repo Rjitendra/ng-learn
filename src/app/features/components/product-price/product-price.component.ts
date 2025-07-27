@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable, of, timer } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 interface Product {
   name: string;
@@ -16,6 +16,11 @@ interface Product {
   styleUrl: './product-price.component.scss',
 })
 export class ProductPriceComponent {
+  // 8️⃣ Watch side-effects
+  logEffect = effect(() => {
+    console.log(`💬 Recalculated total: ₹${this.finalTotal()}`);
+  });
+
   // 1️⃣ Create a signal for the product list
   products = signal<Product[]>([
     { name: 'Laptop', price: 60000, quantity: 1 },
@@ -23,7 +28,7 @@ export class ProductPriceComponent {
   ]);
 
   // 2️⃣ Create a signal for discount % (coming from observable later)
-  private remoteDiscount$: Observable<number> = timer(0, 5000).pipe(
+  remoteDiscount$: Observable<number> = timer(0, 5000).pipe(
     // Simulate discount changing every 5s
     switchMap(() => of(Math.floor(Math.random() * 20) + 5)), // 5% to 25%
   );
@@ -47,9 +52,4 @@ export class ProductPriceComponent {
     updated[index] = { ...updated[index], quantity: +newQty };
     this.products.set(updated);
   }
-
-  // 8️⃣ Watch side-effects
-  logEffect = effect(() => {
-    console.log(`💬 Recalculated total: ₹${this.finalTotal()}`);
-  });
 }

@@ -42,23 +42,23 @@
 
 <h1 class="page-title">Product Manager</h1>
 
-<div class="form-container" *ngIf="model$ | async as model">
+<div *ngIf="model$ | async as model" class="form-container">
   <mat-card>
     <form #productForm="ngForm">
       <mat-form-field appearance="fill" class="form-field">
         <mat-label>Title</mat-label>
-        <input matInput name="title" [(ngModel)]="model.title" required #title="ngModel" />
+        <input #title="ngModel" matInput name="title" required [(ngModel)]="model.title" />
         <mat-error *ngIf="title.invalid && title.touched">Title is required</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="form-field">
         <mat-label>Description</mat-label>
         <input
+          #description="ngModel"
           matInput
           name="description"
-          [(ngModel)]="model.description"
           required
-          #description="ngModel"
+          [(ngModel)]="model.description"
         />
         <mat-error *ngIf="description.invalid && description.touched"
           >Description is required</mat-error
@@ -68,13 +68,13 @@
       <mat-form-field appearance="fill" class="form-field">
         <mat-label>Price</mat-label>
         <input
+          #price="ngModel"
           matInput
           type="number"
           name="price"
-          [(ngModel)]="model.price"
           required
           min="0"
-          #price="ngModel"
+          [(ngModel)]="model.price"
         />
         <mat-error *ngIf="price.invalid && price.touched">Price is required</mat-error>
       </mat-form-field>
@@ -83,8 +83,8 @@
         <button
           mat-raised-button
           color="primary"
-          (click)="save()"
           [disabled]="!productForm.form.valid"
+          (click)="save()"
         >
           Save
         </button>
@@ -92,8 +92,8 @@
         <button
           mat-raised-button
           color="accent"
-          (click)="saveAsDraft()"
           [disabled]="!productForm.form.valid"
+          (click)="saveAsDraft()"
         >
           Save As Draft
         </button>
@@ -104,15 +104,15 @@
 
 <hr />
 
-<div class="list-container" *ngIf="products$ | async as products">
+<div *ngIf="products$ | async as products" class="list-container">
   <div class="grid-wrapper">
-    <mat-card class="product-card" *ngFor="let p of products">
+    <mat-card *ngFor="let p of products" class="product-card">
       <div class="card-content">
         <div class="product-title">{{ p.title }} - ₹{{ p.price }}</div>
         <div class="product-actions">
           <button mat-stroked-button color="primary" (click)="edit(p)">Edit</button>
           <button mat-stroked-button color="warn" (click)="delete(p)">Delete</button>
-          <button mat-stroked-button color="accent" *ngIf="!p.isValid" (click)="disCardDraft(p)">
+          <button *ngIf="!p.isValid" mat-stroked-button color="accent" (click)="disCardDraft(p)">
             Discard Draft
           </button>
         </div>

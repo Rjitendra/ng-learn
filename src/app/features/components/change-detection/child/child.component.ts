@@ -6,6 +6,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
+
 import { ICourse } from '../cource';
 
 @Component({
