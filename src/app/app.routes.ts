@@ -1,38 +1,84 @@
 import { Routes } from '@angular/router';
 
-import { AboutComponent } from './features/components/about/about.component';
-import { ChangeDetectionComponent } from './features/components/change-detection/change-detection.component';
-import { ContactComponent } from './features/components/contact/contact.component';
-import { ExpressBuilderComponent } from './features/components/express-builder/express-builder.component';
-import { HomeComponent } from './features/components/home/home.component';
-import { InterviewQuestionComponent } from './features/components/interview-question/interview-question.component';
-import { MomentsComponent } from './features/components/moments/moments.component';
-import { ProductCrudComponent } from './features/components/product-crud/product-crud.component';
-import { ProductPriceComponent } from './features/components/product-price/product-price.component';
-import { RxjsComponent } from './features/components/rxjs/rxjs.component';
-import { TemplateDrivenFormComponent } from './features/components/template-driven-form/template-driven-form.component';
-import { LayoutComponent } from './layout/layout.component';
-
 export const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
+    loadComponent: () => import('./layout/layout.component').then((m) => m.LayoutComponent),
     children: [
-      { path: '', component: HomeComponent },
-      { path: 'about', component: AboutComponent },
-      { path: 'contact', component: ContactComponent },
-      { path: 'express-builder', component: ExpressBuilderComponent },
-      { path: 'interview-questions', component: InterviewQuestionComponent },
+      {
+        path: '',
+        loadComponent: () =>
+          import('./features/components/home/home.component').then((m) => m.HomeComponent),
+      },
+      {
+        path: 'about',
+        loadComponent: () =>
+          import('./features/components/about/about.component').then((m) => m.AboutComponent),
+      },
+      {
+        path: 'contact',
+        loadComponent: () =>
+          import('./features/components/contact/contact.component').then((m) => m.ContactComponent),
+      },
+      {
+        path: 'express-builder',
+        loadComponent: () =>
+          import('./features/components/express-builder/express-builder.component').then(
+            (m) => m.ExpressBuilderComponent,
+          ),
+      },
+      {
+        path: 'interview-questions',
+        loadComponent: () =>
+          import('./features/components/interview-question/interview-question.component').then(
+            (m) => m.InterviewQuestionComponent,
+          ),
+      },
       {
         path: 'articles/form/template-driven',
-        component: TemplateDrivenFormComponent,
+        loadComponent: () =>
+          import('./features/components/template-driven-form/template-driven-form.component').then(
+            (m) => m.TemplateDrivenFormComponent,
+          ),
       },
-      { path: 'articles/form/reactive', component: ExpressBuilderComponent },
-      { path: 'moments', component: MomentsComponent },
-      { path: 'article/rxjs', component: RxjsComponent },
-      { path: 'cd', component: ChangeDetectionComponent },
-      { path: 'product', component: ProductCrudComponent },
-      { path: 'product-price', component: ProductPriceComponent }, // Assuming ProductPriceComponent is used here)},
+      {
+        path: 'articles/form/reactive',
+        loadComponent: () =>
+          import('./features/components/express-builder/express-builder.component').then(
+            (m) => m.ExpressBuilderComponent,
+          ),
+      },
+      {
+        path: 'moments',
+        loadComponent: () =>
+          import('./features/components/moments/moments.component').then((m) => m.MomentsComponent),
+      },
+      {
+        path: 'article/rxjs',
+        loadComponent: () =>
+          import('./features/components/rxjs/rxjs.component').then((m) => m.RxjsComponent),
+      },
+      {
+        path: 'cd',
+        loadComponent: () =>
+          import('./features/components/change-detection/change-detection.component').then(
+            (m) => m.ChangeDetectionComponent,
+          ),
+      },
+      {
+        path: 'product',
+        loadComponent: () =>
+          import('./features/components/product-crud/product-crud.component').then(
+            (m) => m.ProductCrudComponent,
+          ),
+      },
+      {
+        path: 'product-price',
+        loadComponent: () =>
+          import('./features/components/product-price/product-price.component').then(
+            (m) => m.ProductPriceComponent,
+          ),
+      }, // Assuming ProductPriceComponent is used here)},
     ],
   },
 ];
