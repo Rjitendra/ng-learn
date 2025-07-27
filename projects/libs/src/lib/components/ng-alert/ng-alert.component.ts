@@ -4,13 +4,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 import { Alert } from '../../models/alert';
-import { CommonModule } from '@angular/common';
+
 import { AlertService } from '../../services/alert.service';
 import { NgAlertMessageComponent } from '../ng-alert-message/ng-alert-message.component';
 import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'ng-alert',
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, NgAlertMessageComponent],
+  imports: [MatCardModule, MatButtonModule, MatIconModule, NgAlertMessageComponent],
   templateUrl: './ng-alert.component.html',
   styleUrl: './ng-alert.component.scss',
 })

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -12,7 +12,7 @@ import { ICourse } from './cource';
 
 @Component({
   selector: 'ng-change-detection',
-  imports: [CommonModule, ChildComponent],
+  imports: [ChildComponent],
   templateUrl: './change-detection.component.html',
   styleUrl: './change-detection.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

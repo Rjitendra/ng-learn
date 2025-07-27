@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { INav } from '../models/inav';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -13,9 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 @Component({
   selector: 'lib-menu',
   imports: [
-    CommonModule,
     RouterModule,
-    CommonModule,
     RouterModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -23,8 +21,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatMenuModule,
-  ],
+    MatMenuModule
+],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
 })

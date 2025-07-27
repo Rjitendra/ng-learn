@@ -2,13 +2,13 @@ import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { CommonModule } from '@angular/common';
+
 
 import { InputType } from '../../enums/input-type';
 
 @Component({
   selector: 'ng-input',
-  imports: [MatFormFieldModule, MatInputModule, CommonModule],
+  imports: [MatFormFieldModule, MatInputModule],
   templateUrl: './ng-input.component.html',
   styleUrl: './ng-input.component.scss',
   providers: [

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 interface Moment {
   id: number;
@@ -7,7 +7,7 @@ interface Moment {
 }
 @Component({
   selector: 'ng-moments',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './moments.component.html',
   styleUrl: './moments.component.scss',
 })

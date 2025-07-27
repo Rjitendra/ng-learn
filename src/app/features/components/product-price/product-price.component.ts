@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, computed, effect, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable, of, timer } from 'rxjs';
@@ -11,7 +11,7 @@ interface Product {
 }
 @Component({
   selector: 'ng-product-price',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './product-price.component.html',
   styleUrl: './product-price.component.scss',
 })

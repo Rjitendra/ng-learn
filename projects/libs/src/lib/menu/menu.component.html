@@ -1,26 +1,31 @@
 <!-- Single Menu Item Template (Move Outside) -->
-<ng-template #singleMenuItem let-child>
-  <a mat-menu-item [routerLink]="child.url" [routerLinkActive]="['active']">
-    <mat-icon class="small-icon">{{ child.icon || 'help_outline' }}</mat-icon>
-    {{ child.name }}
-  </a>
-</ng-template>
 
 <!-- Recursive Menu Structure -->
-<ng-container *ngIf="item.children; else singleMenuItem">
+@if (item.children) {
   <!-- Button to trigger submenu -->
   <button mat-menu-item [matMenuTriggerFor]="subMenu" [matMenuTriggerData]="{ menudata: item }">
     <mat-icon class="small-icon">{{ item.icon || 'help_outline' }}</mat-icon>
     {{ item.name }}
     <mat-icon class="small-icon">chevron_right</mat-icon>
   </button>
-
   <!-- Recursive Submenu -->
   <mat-menu #subMenu="matMenu">
     <ng-template matMenuContent let-menudata="menudata">
-      <ng-container *ngFor="let child of menudata.children">
-        <lib-menu *ngIf="child.children; else singleMenuItem" [item]="child"></lib-menu>
-      </ng-container>
+      @for (child of menudata.children; track child) {
+        @if (child.children) {
+          <lib-menu [item]="child"></lib-menu>
+        } @else {
+          <a mat-menu-item [routerLink]="child.url" [routerLinkActive]="['active']">
+            <mat-icon class="small-icon">{{ child.icon || 'help_outline' }}</mat-icon>
+            {{ child.name }}
+          </a>
+        }
+      }
     </ng-template>
   </mat-menu>
-</ng-container>
+} @else {
+  <a mat-menu-item [routerLink]="child.url" [routerLinkActive]="['active']">
+    <mat-icon class="small-icon">{{ child.icon || 'help_outline' }}</mat-icon>
+    {{ child.name }}
+  </a>
+}

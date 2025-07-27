@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, ChangeDetectorRef, ChangeDetectionStrategy, inject } from '@angular/core';
 import { delay, forkJoin, map, of, switchMap, tap } from 'rxjs';
 
@@ -10,7 +10,7 @@ interface Course {
 }
 @Component({
   selector: 'ng-express-builder',
-  imports: [CommonModule, NgTreeComponent],
+  imports: [NgTreeComponent],
   templateUrl: './express-builder.component.html',
   styleUrl: './express-builder.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
