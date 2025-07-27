@@ -10,6 +10,7 @@ import { MomentsComponent } from './features/components/moments/moments.componen
 import { RxjsComponent } from './features/components/rxjs/rxjs.component';
 import { ChangeDetectionComponent } from './features/components/change-detection/change-detection.component';
 import { ProductCrudComponent } from './features/components/product-crud/product-crud.component';
+import { ProductPriceComponent } from './features/components/product-price/product-price.component';
 
 export const routes: Routes = [
   {
@@ -30,6 +31,7 @@ export const routes: Routes = [
       { path: 'article/rxjs', component: RxjsComponent },
       { path: 'cd', component: ChangeDetectionComponent },
       { path: 'product', component: ProductCrudComponent },
+      { path: 'product-price', component: ProductPriceComponent }, // Assuming ProductPriceComponent is used here)},
     ],
   },
 ];

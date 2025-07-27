@@ -70,4 +70,9 @@ export const NAVITEMS: INav[] = [
     url: 'product',
     icon: 'shopping_cart',
   },
+  {
+    name: 'Product',
+    url: 'product-price',
+    icon: 'shopping_cart',
+  },
 ];
