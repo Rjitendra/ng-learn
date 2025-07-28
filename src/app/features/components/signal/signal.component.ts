@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 
+import { CommonService } from '../../../../../projects/libs/src/public-api';
+import { environment } from '../../../../environments/environment';
 import { IProductDto, OperationType } from '../../models/iproduct';
 import { ProductService } from '../../service/product-service';
 
@@ -30,14 +32,18 @@ export class SignalComponent {
 
   readonly validProducts = computed(() => this.products().filter((x) => !x.isDeleted));
 
+  readonly baseUrl = environment.apiBaseUrl;
+
   private productService = inject(ProductService);
+  private http = inject(CommonService);
 
   constructor() {
-    this.loadProducts();
     effect(() => {
       console.log(`💬 Model changed: ${JSON.stringify(this.model())}`);
       console.log(`💬 Valid Products: ${JSON.stringify(this.validProducts())}`);
     });
+    this.http.setBaseUrl(this.baseUrl);
+    this.loadProducts();
   }
 
   save(): void {
@@ -73,7 +79,8 @@ export class SignalComponent {
   }
 
   discardDraft(product: IProductDto): void {
-    this.productService.discardDraft(product).subscribe((res) => {
+    const url = 'product/discard-draft';
+    this.http.post<IProductDto, IProductDto>(url, product).subscribe((res) => {
       if (!res) {
         this.products.update((list) => list.filter((p) => p.pkId !== product.pkId));
       } else {
@@ -107,7 +114,8 @@ export class SignalComponent {
   }
 
   private loadProducts(): void {
-    this.productService.getAll().subscribe((res) => {
+    const url = 'product';
+    this.http.get<IProductDto[]>(url).subscribe((res) => {
       this.products.set(res.filter((x) => !x.isDeleted));
     });
   }

@@ -10,3 +10,4 @@ export * from './lib/components/ng-tree/ng-tree.component';
 export * from './lib/services/alert.service';
 export * from './lib/components/ng-input/ng-input.component';
 export * from './lib/enums/input-type';
+export * from './lib/services/common.service';
